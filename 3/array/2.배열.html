@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+  <head>
+    <title>new document</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript">
+      document.addEventListener("DOMContentLoaded",()=>{
+          const busToData = [
+              ["115-고양","125-광명","135-김포"],
+              ["500-광주","600-대전","603-대구","700-부산"]
+          ]
+          const busFromSlect =document.getElementById("busFrom")
+          const busToSlect =document.getElementById("busTo")
+          busFromSlect.addEventListener('change',(event)=>{
+            busToSlect.innerHTML ='  <option value="">선택</option>';
+            const selectedIndex = busFromSlect.selectedIndex;
+          // console.log(selectedIndex)
+            if(selectedIndex > 0){
+              busToData[selectedIndex-1].forEach(option =>{
+                const [value, text]=option.split("-") //115 고양 , 125 광명, 135 김포,,,
+                //console.log(value,text)
+                const newOption = document.createElement('option');
+                newOption.value = value;
+                //console.log(value)
+                newOption.textContent =`${text}[${value}]` //고양[115] 광명[125]...
+               // console.log(newOption.textContent)
+                busToSlect.appendChild(newOption);
+              })
+            }
+
+          })
+      })
+    </script>
+  </head>
+  <body>
+    <form method="post" action="" name="frm">
+      출발지 
+      <select name="busFrom" id="busFrom">
+        <option value="">선택</option>
+        <option value="200">강릉 [200]</option>
+        <option value="815">경주 [815]</option>
+      </select>
+      |
+      도착지 
+      <select name="busTo" id="busTo">
+        <option value="">선택</option>
+      </select>
+    </form>
+  </body>
+</html>

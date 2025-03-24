@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="Author" content="">
+        <meta name="Keywords" content="">
+        <meta name="Description" content="">
+        <title>Document</title>
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700|Nanum+Myeongjo|Noto+Sans+KR:100,300,400&amp;subset=korean" rel="stylesheet">
+        
+        <link href="https://fonts.googleapis.com/css?family=Nanum+Myeongjo&amp;subset=korean" rel="stylesheet">
+        <style>
+            body, div, h3, ul,li, p, a,span, strong{margin: 0; padding:0;box-sizing: border-box}
+            body{font-family: 'Nanum Myeongjo', serif;}
+            ul{list-style: none}
+            a{text-decoration: none}
+            .wrap{width:990px; margin:50px auto; padding:50px 0 0 0}
+            body{background:url(images/mv02_bg.jpg) no-repeat center }
+            h3{text-align: center}
+            .text{text-align: center;margin:5px 0 20px 0; color:#666}
+            
+            .gallerywrap:after{content:''; display: block; clear: both}
+            .gallerywrap li{width:330px;  float:left; height: 330px; position: relative}
+            .gallerywrap li a{color:#fff; text-decoration: none}
+            
+            .gallery1{background:#1d1d1d; padding:30px; position:relative}
+            .gallery2{background:#881e2e; padding:30px; position:relative}
+            .gallery3{background:#04223c; padding:30px; position:relative}
+            
+            /*처음 보여지는박스 텍스트*/
+             /* .textwrap{display:block}*/
+            .textwrap a{display: block; width:330px;  height: 330px;}
+            .textwrap .num{font-size:62px; font-weight:bold;  display: block; overflow:hidden}
+            .textwrap .num span{display: block; float:left;opacity:0.2}
+            .textwrap .num span + span{margin-top:20px;}
+            .textwrap strong{display: block; font-size:20px;margin-top:20px;}
+            .textwrap .more{display:block; margin-top:60px; text-decoration: underline}
+            
+            
+            /*on/off*/
+            .on{display:block}
+            .off{display:none}
+            
+            /*마우스 올려놓았을때 박스 텍스트*/
+            
+            .textonwrap{position:absolute; top:0; left:0;  width:330px; height:330px; background:url(images/misul_circ.png) no-repeat  0 0; padding:30px;
+           /*display:none*/
+            }
+            .textonwrap a{display: block; width:100%; height:100%; color:#fff}
+            .textonwrap strong{display: block; margin:50px 0 30px 0;
+            font-size: 28px;line-height:1.6; }
+            .textonwrap .text{font-size:14px; line-height:1.5; font-family: 'Nanum Gothic', sans-serif; color:#fff}
+            
+            .textonwrap .bg1{background: url(images/misul_img1.png) no-repeat;width:183px; height:305px; display:block; position:absolute; bottom:-150px; right:-30px }
+            
+            .textonwrap .bg2{background: url(images/misul_img2.png) no-repeat;width:479px; height:281px; display:block; position:absolute; bottom:-150px; right:-250px ; z-index:999}
+            
+            .textonwrap .bg3{background: url(images/misul_img3.png) no-repeat;width:321px; height:247px; display:block; position:absolute; bottom:-150px; right:-120px }
+           
+         
+            
+        </style>
+        
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded",()=>{
+                const galleryBox = document.querySelectorAll(".gallerywrap > li");
+
+                galleryBox.forEach((el)=>{
+                    let textWrap = el.querySelector('.textwrap');
+                    let textOnWrap = el.querySelector('.textonwrap');
+
+                    el.addEventListener("mouseenter",(e)=>{
+                        e.preventDefault();
+                        textWrap.classList.add('off');
+                        textWrap.classList.remove('on');
+
+                        textOnWrap.classList.add('on');
+                        textOnWrap.classList.remove('off');
+                    });
+                    
+                    el.addEventListener("mouseleave",(e)=>{
+                        e.preventDefault();
+                        textWrap.classList.add('on');
+                        textWrap.classList.remove('off');
+
+                        textOnWrap.classList.add('off');
+                        textOnWrap.classList.remove('on');
+                    });
+                });
+            });
+        </script>
+        
+        
+    </head>
+    <body>
+       <div class="wrap">
+          <h3><img src="images/misul_ttl.png" alt=""/>
+          </h3>
+          <p class="text">마포갈매기, 연안식당의 성공신화를 만들어 낸 ‘디딤’</p>
+          <ul class="gallerywrap">
+              <li class="gallery1">
+                  <div class="textwrap" >
+                       <a href="#" >
+                           <span class="num"><span>0</span><span>1</span></span>
+                           <strong>독보적인 영역 구축</strong>
+                           <span class="more">자세히보기</span>
+                       </a>
+
+                   </div>
+                   <div class="textonwrap off">
+                       <a href="#" >
+                           <strong>독보적인 영역<br/> 구축 하다</strong>
+                           <span class="text">여기,미술관만의 정체성을<br/> 잃지 않고 독보적인 영역을 <br/>구축 했습니다.</span>
+                           <span class="bg1"></span>
+                       </a>
+                   </div>
+             </li>
+             
+             
+              <li class="gallery2">
+                  <div class="textwrap">
+                   <a href="#" >
+                      <span class="num"><span>0</span><span>2</span></span>
+                       <strong>미술관 86호점 돌파</strong>
+                       <span class="more">자세히보기</span>
+                   </a>
+                </div>
+                 <div class="textonwrap off">
+                       <a href="#"  >
+                           <strong>여기,미술관<br/> 86호점 돌파</strong>
+                           <span class="text">since2013,<br/>꽤 오랜 시간을 고객과<br/> 소통하며 변화하겠습니다</span>
+                           <span class="bg2"></span>
+                       </a>
+                   </div>
+                  
+              </li>
+              
+              
+              <li class="gallery3">
+                  <div class="textwrap">
+                   <a href="#">
+                      <span class="num"><span>0</span><span>3</span></span>
+                       <strong >자체 개발 메뉴 라인</strong>
+                       <span class="more">자세히보기</span>
+                   </a>
+                </div>
+                  <div class="textonwrap off">
+                       <a href="#">
+                           <strong>자체 개발한<br/> 메뉴 라인</strong>
+                           <span class="text">희소 가치가 높아<br/> 많은 충성 고객층을<br/> 형성하고 있습니다</span>
+                           <span class="bg3"></span>
+                       </a>
+                   </div>
+                  
+              </li>
+          </ul>
+           
+           
+           
+       </div> 
+    </body>
+</html>

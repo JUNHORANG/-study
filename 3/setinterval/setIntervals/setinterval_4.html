@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+
+<head>
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <style type="text/css">
+        body,
+        div,
+        span,
+        a,
+        img {
+            margin: 0;
+            padding: 0
+        }
+
+        img {
+            border: none
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        .banner {
+            width: 697px;
+            height: 326px;
+            margin: 50px auto;
+            position: relative
+        }
+
+        .banner .leftBtn {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            margin-top: -22px;
+        }
+
+        .banner .rightBtn {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            margin-top: -22px;
+        }
+
+        .banner .btn {
+            position: absolute;
+            bottom: 30px;
+            width: 697px;
+            text-align: center
+        }
+        img{vertical-align: middle}
+        .pageNum{margin-left:15px; font-weight: 600; font-size: 14px; padding: 3px 12px;
+        background-color: rgba(0,0,0,0.5); color:#fff;border-radius: 10px}
+        .pageNum .num{color:tomato}
+    </style>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+            const leftBtn =document.querySelector('.leftBtn > a');
+            const rightBtn =document.querySelector('.rightBtn > a');
+            const stopBtn = document.querySelector('.stopBtn');
+            const playBtn = document.querySelector('.playBtn');
+            const bannerImg =document.getElementById('banner');
+            const page = document.querySelector('.pageNum > .num');
+            let currentNum = 1;
+            let sid;
+            console.log(bannerImg)
+            //왼쪽 버튼
+            leftBtn.addEventListener('mouseenter',(e)=>{
+                clearInterval(sid);
+
+            });
+            leftBtn.addEventListener('mouseleave',(e)=>{
+                clearInterval(sid);
+                sid = auto();
+            });
+            leftBtn.addEventListener('click',(e)=>{
+                e.preventDefault();
+                let isnum = currentNum;
+                isnum--;
+                if(isnum < 1) isnum = 5;
+                photo(isnum);
+            });
+
+            //오른쪽 버튼
+            rightBtn.addEventListener('mouseenter',(e)=>{
+                clearInterval(sid);
+
+            });
+            rightBtn.addEventListener('mouseleave',(e)=>{
+                clearInterval(sid);
+
+            });
+            rightBtn.addEventListener('click',(e)=>{
+                e.preventDefault();
+                let isnum = currentNum;
+                isnum++;
+                if(isnum > 5) isnum = 1;
+                photo(isnum);
+
+            });
+
+            //배너이미지
+            const photo = (num)=>{
+                bannerImg.src = `images/img${num}.jpg`;
+                page.textContent = num;
+                currentNum = num;
+            }
+            //번호 증가
+            const rolling = (num)=>{
+                let isNum = currentNum;
+                isNum++;
+                if(isNum > 5) isNum = 1;
+                photo(isNum); 
+            }
+            //setinterval
+            let isAuto = true;
+            const auto = ()=>{
+                if(isAuto){
+                    return setInterval(rolling,2000);
+                } else {
+                    return clearInterval(sid);
+                }
+            }
+            sid = auto();
+
+            //정지 버튼
+            stopBtn.addEventListener('click',(e)=>{
+                e.preventDefault();
+                isAuto=false;
+                clearInterval(sid);
+                e.currentTarget.style.display="none";
+                playBtn.style.display ='inline-block';
+            });
+            //실행 버튼
+            playBtn.addEventListener('click',(e)=>{
+                e.preventDefault();
+                isAuto=true;
+                // clearInterval(sid);
+                sid = auto();
+                e.currentTarget.style.display="none";
+                stopBtn.style.display ='inline-block';
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="banner">
+        <span class="leftBtn">
+            <a href="#" >
+                <img src="images/leftbtn.jpg" alt="" />
+            </a>
+        </span>
+
+        <div id="slideBanner">
+            <a href="#"><img src="images/img1.jpg" alt="" id="banner" /></a>
+        </div>
+
+        <span class="rightBtn">
+            <a href="#" >
+                <img src="images/rightbtn.jpg" alt="" />
+            </a>
+        </span>
+
+        <div class="btn">
+            <a href="#" class="stopBtn"><img src="images/pause.png" alt="" /></a>
+            <a href="#" class="playBtn" style="display: none;"><img src="images/play-button.png" alt="" /></a>
+            <span class="pageNum"><span class="num">1</span>/5</span>
+        </div>
+          
+
+    </div>
+
+</body>
+
+</html>

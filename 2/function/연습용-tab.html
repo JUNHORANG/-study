@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div,ul,li,h3, a{margin: 0; padding: 0;}
+        ul{list-style: none;}
+        a{text-decoration: none; color:#222}
+        body{font-family: '본고딕','돋움',dotum,sans-serif;}
+        #tab{
+            width: 300px;
+            position:relative;
+            margin: auto auto;
+        }
+        .tab > li{
+            float: left;
+            width: 100px;
+            height: 35px;
+            background-color: #222;
+            line-height: 35px;
+        }
+        .tab > li >a {
+            display: block;
+            text-align: center;
+            color: #fff;
+        }
+
+        .tab >.select{
+            background-color: #07c;
+        }
+        .tabMenu {
+            position: absolute;
+            top:40px;
+            left: 0;
+            display: none;
+        }
+        .tab> li:first-child > ul{
+            display: block;
+        }
+        
+        
+
+    </style>
+</head>
+<body>
+    <div id="tab">
+        <ul id="tabContainer" class="tab">
+            <li class="select">
+                <a href="#">공지사항</a>
+                <ul class="tabMenu">
+                    <li><a href="#">공지사항 입니다</a></li>
+                    <li><a href="#">공지사항 입니다</a></li>
+                    <li><a href="#">공지사항 입니다</a></li>
+                    <li><a href="#">공지사항 입니다</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">고시공고</a>
+                <ul class="tabMenu">
+                    <li><a href="#">고시공고 입니다</a></li>
+                    <li><a href="#">고시공고 입니다</a></li>
+                    <li><a href="#">고시공고 입니다</a></li>
+                    <li><a href="#">고시공고 입니다</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

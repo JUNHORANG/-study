@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+<style type="text/css">
+
+ *{margin:0; padding:0}
+ body{font-size:12px;
+ color:#333;
+ font-family:"돋움",dotum;
+ }
+ img{border:none;
+	vertical-align:top;}
+ .control a[class*="btn_"] {
+    background: rgba(0, 0, 0, 0) url("images/bannerzone_control.gif") no-repeat scroll 0 0;
+    border-left: 1px solid #cbcbcb;
+    display: block;
+    float: left;
+    height: 34px;
+    overflow: hidden;
+    width: 34px;
+}
+ .control a span {
+    float: left;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    position: absolute;
+    visibility: hidden;
+    width: 0;
+}
+ .control a.btn_left {
+    background-position: 0 0;
+}
+ .control a.btn_play {
+    background-position: 0 -34px;
+}
+ .control a.btn_stop {
+    background-position: 0 -68px;
+}
+ .control a.btn_right {
+    background-position: 0 -102px;
+}
+ .control a.btn_more {
+    background-position: 0 -136px;
+}
+ .js_slide.type_03 {
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+ .js_slide.type_03 h3 {
+    font-size: 22px;
+    line-height: 34px;
+    
+}
+ .js_slide.type_03 .control {
+    height: 34px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: auto;
+    z-index: 10;
+}
+ .js_slide.type_03 .control .count {
+    color: #e66d37;
+    float: left;
+    margin-right: 10px;
+    padding-top: 10px;
+}
+ .js_slide.type_03 .control .count span {
+    color: #444;
+}
+.left_elem {
+    
+    height: 300px;
+    width: 450px;
+		margin:50px auto ;
+		border:1px solid #c3c3c3;
+		position:relative;
+	
+}
+.move{overflow:hidden;
+  width:450px;
+	height:280px;
+	} 
+.move ul{width:2250px; position:relative;
+
+}
+.move ul li{float:left; position:absolute; left:0; top:0}
+
+.conut_N{position:absolute;
+				top:10px;
+				right:190px;}
+.conut_N .count{color:red;}
+
+</style>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+ <script language="javascript" type="text/javascript">
+    document.addEventListener("DOMContentLoaded",() =>{
+
+        const slides = document.querySelectorAll('.move li');
+        const leftBtn = document.querySelector('.btn_left');
+        const rightBtn = document.querySelector('.btn_right');
+        const playBtn = document.querySelector('.btn_play');
+        const stopBtn = document.querySelector('.btn_stop');
+        let count = document.querySelector('.count');
+        //이미지 최대 길이
+        const maxNum = slides.length -1;
+
+        let num = 0;
+
+        slides.forEach((slide,idx)=>{
+            slide.style.display = idx === 0 ? 'block':'none';
+        });
+
+        function updateSlide(selectNum){
+            slides.forEach((slide,idx)=>{
+                if(idx === selectNum){
+                    slide.style.display = 'block';
+                } else {
+                    slide.style.display = 'none';
+                }
+            });
+            count.textContent = selectNum+1;
+            num = selectNum;
+        }
+
+        leftBtn.addEventListener('click',(e)=>{
+            e.preventDefault();
+            const prevNum = num <= 0 ? maxNum : num-1;
+            updateSlide(prevNum);
+        });
+        rightBtn.addEventListener('click',(e)=>{
+            e.preventDefault();
+            const nextNum = num >= maxNum ? 0: num+1;
+            updateSlide(nextNum);
+        });
+
+        const rolling = ()=>{
+            rightBtn.dispatchEvent(new Event('click'));
+        }
+
+        let bannerInterval = null;
+        let isAuto = true;
+
+        const startAutoSlide = ()=>{
+            if(isAuto){
+                return setInterval(rolling,3000);
+            } else {//isAuto가 false이면 setinterval을 돌리지 않음
+                return 0
+            }
+        }
+
+        bannerInterval = startAutoSlide();
+
+        stopBtn.addEventListener('click',(e)=>{
+            e.preventDefault();
+            isAuto = false;
+            clearInterval(bannerInterval);
+        });
+        playBtn.addEventListener('click',(e)=>{
+            e.preventDefault();
+            isAuto = true;
+            clearInterval(bannerInterval);
+            bannerInterval = startAutoSlide();
+        });
+
+        [leftBtn, rightBtn].forEach((btn)=>{
+            btn.addEventListener('mouseenter',(e)=>{
+            clearInterval(bannerInterval);
+            });
+
+            btn.addEventListener('mouseleave',(e)=>{
+                clearInterval(bannerInterval);
+                bannerInterval = startAutoSlide();
+            });
+        })
+    });
+ </script>
+
+  <title>Document</title>
+ </head>
+ <body>
+    <div class="left_elem">
+		<div class="js_slide type_03">
+			<h3>팝업존</h3>
+            <div class="conut_N">
+				<span class="count">1</span><span class="banner_total;">/5</span>
+			</div>
+            <div class="control">
+                <a href="#link" class="btn_left"><span>이전</span></a>
+                <a href="#link" class="btn_play"><span>재생</span></a>
+                <a href="#link" class="btn_stop"><span>정지</span></a>
+                <a href="#link" class="btn_right"><span>다음</span></a>
+                <a href="/" class="btn_more"><span>더보기</span></a>
+            </div>
+            <div class="move">
+                <ul>
+                    <li class="on"><a href="/" class="bImg on" target="_blank" title="새창이동">
+                    <img src="images/banner1.jpg" alt="2017년부터 이렇게 달라집니다." /></a></li>
+                
+                    <li><a href="/" class="bImg" target="_blank" title="새창이동">
+                    <img src="images/banner2.jpg" alt="재난시 국민 행동 요령"/></a></li>
+                
+                    <li><a href="/ " class="bImg" target="_blank" title="새창이동">
+                    <img src="images/banner3.jpg" alt="죠류인플루엔자, 무엇이든 물어보세요!"  /></a></li>
+                
+                    <li><a href="/" class="bImg" target="_blank" title="새창이동">
+                    <img src="images/banner4.jpg" alt="공익신고 철저한 비밀보장과 보호를 약속합니다." /></a></li>
+                
+                    <li><a href="#this" class="bImg" >
+                    <img src="images/banner5.jpg" alt="테러가 의심되면... 111/112 테러 신고 포상금 최고 1억원 111(국가정보원) 또는  112(경찰청)로 신고하세요. 국무총리실대테러센터"  /></a></li>
+                
+                </ul>
+            </div>
+		</div>
+	</div>
+
+ </body>
+</html>

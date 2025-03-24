@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="Generator" content="EditPlus®" />
+    <meta name="Author" content="" />
+    <meta name="Keywords" content="" />
+    <meta name="Description" content="" />
+    <title>Document</title>
+    <style type="text/css">
+      html {
+        overflow: hidden;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        letter-spacing: -1px;
+        font-size: 12px;
+      }
+      .story {
+        width: 200px;
+        height: 200px;
+        background: url(images/obj_tit_story.png) no-repeat right bottom #009966;
+        padding: 30px 20px 0 20px;
+        float: left;
+        position: relative;
+      }
+      .article {
+        width: 198px;
+        height: 198px;
+        padding: 30px 20px 0 20px;
+        float: left;
+        border: 1px solid #e1e1e1;
+        text-align: center;
+        display: none;
+      } /* 추가*/
+      .article.on {
+        display: block;
+      } /* 추가*/
+      h3 {
+        color: #fff;
+        font-size: 23px;
+        font-family: 나눔고딕, sans-serif;
+        margin: 0 0 15px 0;
+      }
+      ul {
+        list-style-type: none;
+        font-size: 14px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+      .more {
+        position: absolute;
+        bottom: 20px;
+        left: 30px;
+      }
+      .more a {
+        font-size: 11px;
+      }
+      .all {
+        border: 1px solid #fff;
+        width: 190px;
+        height: 30px;
+        line-height: 30px;
+        padding: 0 0 0 10px;
+      }
+      .all a {
+        display: block;
+      }
+      .stroywrap {
+        width: 484px;
+        margin: 100px auto;
+      }
+      .more1 a {
+        color: #5d5d5d;
+        font-size: 11px;
+        margin-top: 5px;
+        display: block;
+        text-align: left;
+      }
+      .top {
+        font-size: 12px;
+        margin: 0 0 10px 0;
+      }
+      .list {
+        margin-top: 2px;
+        position: relative;
+        z-index: 3;
+        display: none;
+      }
+
+      .list li {
+        line-height: 30px;
+        border: 1px solid #d7d7d7;
+        margin-top: -1px;
+        padding-left: 15px;
+        width: 185px;
+        background: #fff;
+      }
+      .list li:hover {
+        background: #e1e1e1;
+      }
+      .list li a {
+        color: #666;
+      }
+
+  
+    </style>
+    <script language="javascript" type="text/javascript">
+      document.addEventListener('DOMContentLoaded',() => {
+
+        const selectBox = document.getElementById('select_box');
+        const selectBoxList = document.getElementById('select_box_list');
+        const selectBoxItems = selectBoxList.querySelectorAll('a');
+        const articles = document.getElementById('articles');
+        const articlesDiv = articles.querySelectorAll('div');
+        let currentNum = 0;
+
+        selectBox.addEventListener('click', e =>{
+          e.preventDefault();
+          if(selectBoxList.style.display === 'none'){
+            selectBoxList.style.display = 'block';
+          } else {
+            selectBoxList.style.display = 'none';
+          }
+        });
+
+        let index = 0;
+        for(const item of selectBoxItems){
+          item.num = index++;
+          item.addEventListener('click', e => {
+            e.preventDefault();
+            selectBox.textContent = e.currentTarget.textContent;
+            selectBoxList.style.display = 'none';
+            displayArticles(item.num);
+          });
+
+          const displayArticles = (num,) => {
+            if(currentNum !== num){
+              articlesDiv[currentNum].classList.remove('on');
+              articlesDiv[num].classList.add('on');
+              currentNum = num;
+            }
+          }
+        }
+        
+      });
+    </script>
+  </head>
+
+  <body>
+    <div class="stroywrap">
+      <div class="story">
+        <h3>STORY대전</h3>
+        <p class="all">
+          <a href="#" id="select_box">전체보기</a>
+        </p>
+        <ul class="list" id="select_box_list" style="display: none">
+          <li><a href="#">전체보기</a></li>
+          <li><a href="#">소통경청 행복시정</a></li>
+          <li><a href="#">도시재생 균형잘전</a></li>
+          <li><a href="#">희망경제 기업도시</a></li>
+          <li><a href="#">환경교통 관광여가</a></li>
+          <li><a href="#">첨단과학 문화도시</a></li>
+          <li><a href="#">생생현장 포토시정</a></li>
+        </ul>
+        <p class="more"><a href="#">더보기</a></p>
+      </div>
+
+      <div class="articles" id="articles">
+        <div class="article on">
+          <p class="top">즐거운 설명절 종합대책! 새해 복 많이...</p>
+          <span
+            ><img
+              src="images/20170126105339038_thumb.jpg"
+              width="180px"
+              height="130px"
+              alt=""
+          /></span>
+          <p class="more1"><a href="#">전체보기</a></p>
+        </div>
+        <div class="article">
+          <p class="top">내년예산 사업 선제적 대응으로...</p>
+          <span
+            ><img
+              src="images/20170126105339038_thumb.jpg"
+              width="180px"
+              height="130px"
+              alt=""
+          /></span>
+          <p class="more1"><a href="#">소통경청 행복시정</a></p>
+        </div>
+        <div class="article">
+          <p class="top">전국최고 수준 주거복지정책...</p>
+          <span
+            ><img
+              src="images/20170126105339038_thumb.jpg"
+              width="180px"
+              height="130px"
+              alt=""
+          /></span>
+          <p class="more1"><a href="#">도시재생 균형발전</a></p>
+        </div>
+        <div class="article">
+          <p class="top">중국시장 진출 4600억원 수출협약 ...</p>
+          <span
+            ><img
+              src="images/20170126105339038_thumb.jpg"
+              width="180px"
+              height="130px"
+              alt=""
+          /></span>
+          <p class="more1"><a href="#">희망경제 기업도시</a></p>
+        </div>
+        <div class="article">
+          <p class="top">길 건널 땐 스마트폰 NO! 경계표지판 ...</p>
+          <span
+            ><img
+              src="images/20170126105339038_thumb.jpg"
+              width="180px"
+              height="130px"
+              alt=""
+          /></span>
+          <p class="more1"><a href="#">환경교통관광여가</a></p>
+        </div>
+        <div class="article">
+          <p class="top">시민이 만드는 햇빛발전소 건립 ...</p>
+          <span
+            ><img
+              src="images/20170126105339038_thumb.jpg"
+              width="180px"
+              height="130px"
+              alt=""
+          /></span>
+          <p class="more1"><a href="#">첨단과학 문화도시</a></p>
+        </div>
+        <div class="article">
+          <p class="top">관람객 22만명! 대전사이언스페스티벌.. .</p>
+          <span
+            ><img
+              src="images/20170126105339038_thumb.jpg"
+              width="180px"
+              height="130px"
+              alt=""
+          /></span>
+          <p class="more1"><a href="#">생생현장 포토시정</a></p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

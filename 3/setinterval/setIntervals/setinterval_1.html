@@ -1,0 +1,106 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+  <title> new document </title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+
+	html, body {font: 12px/15px "돋움",Dotum,Tahoma,Arial;}  
+	div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td {margin: 0;padding: 0;}
+	img {border:none;}
+	ol, ul, li {list-style: none;}
+	#todayHotDeal {width:947px;height:409px;padding:15px 16px 15px 15px;background:#fff;}
+	#todayHotDeal.bp15 {padding-bottom:15px;}
+	#todayHotDeal div {position:relative;float:left;width:752px;}
+	#todayHotDeal div a {display:none}
+	#todayHotDeal div a.on {display:block}
+	#todayHotDeal div .tsBand {position:absolute;top:9px;left:-8px;width:150px;height:72px;background:url('images/bg_main_stripe_20121023.png') no-repeat -575px -100px;z-index:100}
+	#todayHotDeal ul {float:left;width:195px;}
+	#todayHotDeal ul li {position:relative;width:195px;height:102px;cursor:pointer}
+	#todayHotDeal ul li#thdm1 {background:url('images/tab1.jpg') no-repeat;}
+	#todayHotDeal ul li#thdm1.on {background-position:-195px 0}
+	#todayHotDeal ul li#thdm2 {background:url('images/tab2.jpg') no-repeat;}
+	#todayHotDeal ul li#thdm2.on {background-position:-195px 0}
+	#todayHotDeal ul li#thdm3 {background:url('images/tab3.jpg') no-repeat;}
+	#todayHotDeal ul li#thdm3.on {background-position:-195px 0}
+	#todayHotDeal ul li#thdm4 {height:103px;background:url('images/tab4.jpg') no-repeat;}
+	#todayHotDeal ul li#thdm4.on {background-position:-195px 0}
+	#todayHotDeal ul li span {display:none;position:absolute;top:42px;left:-8px;width:11px;height:17px;background:url('images/bg_main_stripe_20121023.png') no-repeat -620px -60px;}
+	#todayHotDeal ul li span.on {display:block}
+ 
+  </style>
+  <script type="text/javascript">
+		document.addEventListener('DOMContentLoaded',()=>{
+			const tabList = document.querySelectorAll('#tabList li');
+			const menuListItems = document.querySelectorAll('#menuList a');
+			let currentNum = 0;
+
+			tabList.forEach((li,idx)=>{
+				li.num = idx;
+				li.addEventListener('mouseenter',(e)=>{
+					clearInterval(sid);
+					selectMenu(e.currentTarget.num);
+				});
+
+				li.addEventListener('mouseleave',(e)=>{
+					clearInterval(sid);
+					sid = auto();
+				});
+			})
+
+			const selectMenu = (num)=>{
+				if(currentNum !== num){
+					tabList[currentNum].classList.remove('on');
+					menuListItems[currentNum].classList.remove('on');
+					tabList[currentNum].getElementsByTagName('span')[0].classList.remove('on');
+
+					tabList[num].classList.add('on');
+					menuListItems[num].classList.add('on');
+					tabList[num].getElementsByTagName('span')[0].classList.add('on');
+					currentNum = num;
+				}
+			}
+
+			let sid;//setinterval 저장
+
+			const rolling = ()=>{
+				let isnum = currentNum;
+				isnum++;
+				if(isnum > tabList.length-1){
+					isnum = 0;
+				}
+				selectMenu(isnum);
+			}
+
+			const auto = ()=>{
+				return setInterval(rolling,2000);
+			}
+			sid = auto();
+			
+
+		});
+  	
+   
+  </script>
+ </head>
+ <body style="padding:100px;">
+ <div id="todayHotDeal" class="bp15">
+		<div id="menuList">
+			<a href="#" class="on"><img src="images/p1.jpg" width="752" height="409" alt="" /></a>
+			<a href="#"><img src="images/p2.jpg" width="752" height="409" alt="" /></a>
+			<a href="#" ><img src="images/p3.jpg" width="752" height="409" alt="" /></a>
+			<a href="#" ><img src="images/p4.jpg" width="752" height="409" alt="" /></a>
+			<span class="tsBand"></span><!--today리본-->
+		</div>
+
+		<ul id="tabList">
+			<li id="thdm1" class="on"><span class="on"></span></li><!-- span은 화살표 보이고 안보이고-->
+			<li id="thdm2"><span></span></li>
+			<li id="thdm3"><span></span></li>
+			<li id="thdm4"><span></span></li>
+	 </ul>
+</div>
+ </body>
+</html>

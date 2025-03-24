@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+  <title> new document </title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+ 
+  body,div,img,p,h3{margin:0;padding:0;}
+  .wrap{width:500px; border:1px solid #e1e1e1; padding:5px; position:relative; top:50px; left:100px;}
+  h3{background-color:#f4f4f4; height:20px; padding:10px 0 0 20px; margin-bottom:10px; border-bottom:1px solid #e1e1e1;}
+  body{font-size:12px; color:#000; font-family:"돋움";}
+  p.text{background-color:#f4f4f4; border:1px solid #e1e1e1; margin-top:10px; padding:5px; line-height:17px;}
+  h3{font-size:100%;}
+  input{margin-top:10px;}
+
+  </style>
+  <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded",()=>{
+        //이미지 바꾸기
+        const movieImg = document.querySelector("#pic");
+        const imgBtns = document.querySelectorAll(".imgBtn");
+
+        imgBtns.forEach((el) => {
+            el.addEventListener("click",(e) => {
+                let imgNum = e.target.dataset.movieNum;
+                movieImg.src = `images/movie${imgNum}.jpg`;
+            });
+        });
+        
+        
+        const movieCom = document.querySelector("#comment");
+        const alignBtns = document.querySelectorAll(".alignBtn");
+
+        alignBtns.forEach((el) => {
+            el.addEventListener("click",(e) =>{
+                let textAlign = e.target.dataset.align;
+                movieCom.style.textAlign = textAlign;
+            })
+        })
+    });
+   
+
+  </script>
+ </head>
+ <body>
+ <div class="wrap">
+	<h3>도둑들</h3>
+		<p>
+            <img src="images/movie1.jpg" alt="영화1" width="500" id="pic" />
+        </p>
+        <button class="imgBtn" type="button" data-movie-num="1">영화1</button>
+        <button class="imgBtn" type="button" data-movie-num="2">영화2</button>
+        <button class="imgBtn" type="button" data-movie-num="3">영화3</button>
+
+		<p class="text" id="comment" style="background-color:#ffffff;">10인의 도둑, 1개의 다이아몬드 그들이 움직이기 시작했다!
+			한 팀으로 활동 중인 한국의 도둑 뽀빠이와 예니콜, 씹던껌, 잠파노. 미술관을 터는데 멋지게 성공한 이들은 뽀빠이의 과거 파트너였던 마카오박이 제안한 홍콩에서의 새로운 계획을 듣게 된다. 여기에 마카오박이 초대하지 않은 손님, 감옥에서 막 출소한 금고털이 팹시가 합류하고 5명은 각자 인생 최고의 반전을 꿈꾸며 홍콩으로 향한다...</p>>
+
+		<!--색상만작업-->
+	    <button class="alignBtn" type="button" data-align="left">left</button>
+        <button class="alignBtn" type="button" data-align="center">cnenter</button>
+        <button class="alignBtn" type="button" data-align="right">right</button>
+	</div>
+
+</body>
+</html>

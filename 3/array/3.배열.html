@@ -1,0 +1,261 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+  <title>New Document</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+    html,
+    body {
+      font: 12px/15px "돋움", Dotum, Tahoma, Arial;
+    }
+    div,
+    dl,
+    dt,
+    dd,
+    ul,
+    ol,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    pre,
+    form,
+    fieldset,
+    input,
+    textarea,
+    p,
+    blockquote,
+    th,
+    td {
+      margin: 0;
+      padding: 0;
+    }
+    img {
+      border: none;
+    }
+    ol,
+    ul,
+    li {
+      list-style: none;
+    }
+    a {
+      color: #333333;
+      text-decoration: none;
+    }
+    .module {
+      position: relative;
+      border: 1px solid #ccc;
+      background: #fff;
+      height: 252px;
+      margin-right: 0;
+    }
+    .mod-special {
+      width: 305px;
+    }
+    .mod-special .mod-title {
+      margin: 13px 0 0 19px;
+      font-size: 100%;
+      line-height: 1;
+      zoom: 1;
+    }
+    .mod-title img {
+      vertical-align: top;
+    }
+    .mod-special .product-list {
+      position: relative;
+      width: 265px;
+      height: 216px;
+      margin: 11px auto 0;
+      overflow: hidden;
+    }
+    .product-list ul,
+    .product-list ol {
+      width: 1000%;
+      zoom: 1;
+    }
+    .product-list li {
+      float: left;
+      display: inline;
+      width: 130px;
+      margin-right: 5px;
+      text-align: center;
+    }
+    .mod-special .product {
+      height: 216px;
+      position: relative;
+      display: block;
+    }
+    .mod-special .product .content {
+      width: 100%;
+      margin-top: 10px;
+    }
+    .product .name {
+      height: 30px;
+      margin-bottom: 6px;
+      overflow: hidden;
+    }
+    .product .price {
+      margin-bottom: 1px;
+      font-weight: bold;
+    }
+    .mod-special .mod-control {
+      top: 10px;
+      right: 20px;
+      position: absolute;
+      float: left;
+      color: #A1A1A1;
+      font: 11px/14px Tahoma, Gulim, '굴림', sans-serif;
+    }
+    .mod-control .pages {
+      float: left;
+      margin-right: 7px;
+    }
+    .mod-control .prev,
+    .mod-control .next {
+      float: left;
+      width: 19px;
+      height: 14px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      overflow: hidden;
+      background: #FFFFFF url('images/control.gif') no-repeat 0 0;
+      text-indent: -10000%;
+      cursor: pointer;
+    }
+    .mod-control .next {
+      width: 18px;
+      background-position: -19px 0;
+    }
+  </style>
+  <script type="text/javascript">
+    // window onload event -> es6 event로 변경
+    document.addEventListener('DOMContentLoaded', () => {
+      // 제품 데이터
+      const product = [
+        ['로지텍 코리아 G1 gray 무광 마우스/ 대량구매가능/무상3년 PC방 게임방 피씨방 판매1위 게이밍', '[NEW] 옥시데톨핸드워시250mlx4/오리지날/센스티브/데일리케어/스킨케어-모이스춰/허브/항균/손세정제'],
+        ['신상특가 2900원[타업체가격비교필수]비니/방울모자/방한모자/머플러/털모자/스마트폰장갑/목도리/터치장갑', '완전특가 우리아이 문구세트/학용품세트/신학기준비물/학용품/어린이/초등학교입학선물/조카선물/선물세트'],
+        ['[2013신간특가] 긍정심리생활창작동화/우리창작동화/(세계창작동화)/한국창작동화/긍정심리의 힘 변화의힘', '[INS]판매1위+당일출고 LG 사무용 유선전화기[GS-460]']
+      ];
+      // 제품 이미지
+      const productImage = [
+        ['images/item1_1.png', 'images/item1_2.png'],
+        ['images/item2_1.png', 'images/item2_2.png'],
+        ['images/item3_1.png', 'images/item3_2.png']
+      ];
+      // 제품 가격은 숫자이기 때문에 숫자로 변경 함
+      const price = [
+        [20310, 8900],
+        [4900, 9900],
+        [15800, 14000]
+      ];
+      // 재생목록을 추가하는 함수
+      const displayManager = (num) => {
+        const pages = document.getElementById('pages');
+        const list = document.getElementById('list');
+        // <strong>1</strong>/3 페이지 번호 업데이트
+        pages.innerHTML = `<strong>${num + 1}</strong>/3`
+        // 현재 목록 초기화
+        list.innerHTML = " "
+        // 제품 항목 추가
+        product[num].forEach((value, index) => {
+          const li = document.createElement('li');
+          const a = document.createElement('a');
+          a.setAttribute('href', '#')
+          a.classList.add('product')
+          const thumbnail = document.createElement('div');
+          thumbnail.classList.add('thumbnail')
+          const img = document.createElement('img')
+          img.setAttribute('src', productImage[num][index])
+          img.setAttribute('alt', '')
+          thumbnail.appendChild(img);
+          const content = document.createElement('div')
+          content.classList.add('content')
+          const name = document.createElement('div')
+          name.classList.add('name')
+          name.textContent = value;
+          const preiveDiv = document.createElement('div')
+          preiveDiv.classList.add('price')
+          content.appendChild(name);
+          content.appendChild(preiveDiv);
+          a.appendChild(thumbnail)
+          a.appendChild(content)
+          li.appendChild(a)
+          list.appendChild(li)
+        })
+      }
+      // 이전버튼 클릭이벤트
+      let num = 0
+      const prevButton = document.querySelector('.prev')
+      if (prevButton !== null) {
+        prevButton.addEventListener('click', (e) => {
+          num--;
+          if (num < 0) num = 2;
+          displayManager(num)
+        })
+        prevButton.addEventListener('mouseenter', (e) => {
+          clearInterval(sid)
+        })
+        prevButton.addEventListener('mouseenter', (e) => {
+          clearInterval(sid)
+          sid = autoButtonClick()
+        })
+      }
+      // 다음버튼 클릭이벤트
+      const nextButton = document.querySelector('.next')
+      if (nextButton !== null) {
+        nextButton.addEventListener('click', (e) => {
+          num++;
+          if (num > 2) num = 0;
+          displayManager(num)
+        })
+        nextButton.addEventListener('mouseenter', (e) => {
+          clearInterval(sid)
+        })
+        nextButton.addEventListener('mouseenter', (e) => {
+          clearInterval(sid)
+          sid = autoButtonClick()
+        })
+      }
+      displayManager(num)
+      // 3초마다 자동 메뉴 전환 setInterval
+      let sid = null
+      const autoButtonClick = () => {
+        return setInterval(() => {
+          // nextButton.click(); addEventListener로 등록한 경우 dispatchEvent로 이벤트 강제 실행
+          nextButton.dispatchEvent(new Event('click'))
+        }, 3000)
+      }
+      // dom 정보가 없을 때 event 설정하면 에러나기 때문에 ..
+      if (nextButton !== null) {
+        sid = autoButtonClick()
+      }
+    });
+  </script>
+</head>
+<body style="padding:100px;">
+  <div class="module mod-special">
+    <h2 class="mod-title">
+      <a href="#"><img src="images/title_special.gif" alt="초특가" /></a>
+    </h2>
+    <div class="mod-body">
+      <div class="product-list">
+        <ul id="list">
+          <!-- 제품 항목들이 동적으로 추가됩니다. -->
+        </ul>
+      </div>
+      <div class="mod-control">
+        <span class="pages" id="pages"><!-- <strong>1</strong>/3 --></span>
+        <input type="button" value="이전" class="prev" />
+        <input type="button" value="다음" class="next" />
+      </div>
+    </div>
+  </div>
+</body>
+</html>

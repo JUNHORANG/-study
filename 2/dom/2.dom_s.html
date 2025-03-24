@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+  	body,ul,li,div, input,img, a {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font-family: dotum;
+		vertical-align: top;
+		color: #7d7d7d;
+		font-size: 12px;
+		text-align: left;
+	}
+	
+	ul{list-style-type:none;}
+	span{font-weight:bold;}
+
+	.contentBox .certificationTypeBox {width:697px; border:2px solid #e7e7e7; padding:33px 0 34px 39px; margin-left:21px; margin-bottom:15px; display:none;}
+	.contentBox .certificationTypeBox .certificationTypeRadios {width:658px; height:30px;border-bottom:1px solid #e7e7e7; text-align:center;}
+	.contentBox .certificationTypeBox .certificationTypeRadios ul {display:inline-block;zoom:1; *display:inline;}
+	.contentBox .certificationTypeBox .certificationTypeRadios ul li {height:16px; margin-right:53px; float:left;}
+	.contentBox .certificationTypeBox .certificationTypeRadios ul li.noMargin {margin-right:0px;}
+	.contentBox .certificationTypeBox .certificationTypeRadios ul li input {margin-right:5px; position:relative; top:2px;}     
+	
+	.contentBox .certificationTypeBox .certificationTypeInfo {text-align:center;letter-spacing:-1px; display:none; line-height:16px; padding-bottom:24px; padding-top:25px;}
+
+	.contentBox .certificationTypeBox .okBtn {text-align:center; display:none;}
+	.contentBox .selected,
+	.contentBox .certificationTypeBox .selected,
+	.contentBox .certificationTypeSubInfos .selected
+	{display:block;}
+
+  </style>
+  <script type="text/javascript">
+		document.addEventListener("DOMContentLoaded",()=>{
+			const radioInputs = document.querySelectorAll(".radioBtn input");
+			const textContainer = document.querySelector("#txtContainer");
+			const btnContainer = document.querySelector("#btnContainer");
+
+			radioInputs.forEach((e)=>{
+				e.addEventListener("click",(e)=>{
+
+					//txt 변경
+					textContainer.innerHTML = e.target.value === "IPin" ?
+						"아이핀 인증으로 실명 확인을 진행하려면 아래 <span>‘아이핀 인증받기’</span>를 클릭해 주세요.":
+						"소지하고 계신 핸드폰 번호를 입력해서 인증받는 방법입니다.<br />아래 <span>‘휴대폰 인증받기’</span>를 클릭해 주세요.";
+					//btn 이미지 변경
+					btnContainer.innerHTML = e.target.value === "IPin" ?
+					`<a href="#"><img src="images/ipinOkBtn.jpg" alt="아이핀으로 인증" /></a>`:
+					`<a href="#"><img src="images/celPhoneOkBtn.jpg" alt="휴대폰으로 인증" /></a>`;
+					
+				})
+			})
+		});
+	
+  </script>
+ </head>
+
+ <body style="padding:100px;">
+	<div class="contentBox">
+		<div class="certificationTypeBox selected">
+			<div class="certificationTypeRadios">
+				<ul class="radioBtn">
+					<li>
+						<input type="radio" name="certificationType" value="IPin" checked="checked" id="inpintxt" />
+						<label for="inpintxt"><img src="images/ipinTxt.jpg" alt="" /></label>
+					</li>
+					<li class="noMargin">
+						<input type="radio" name="certificationType" value="EmTel" id="celphone" />
+						<label for="celphone"><img src="images/celPhoneTxt.jpg" alt="" /></label>
+					</li>
+				</ul>
+			</div>
+			<div class="certificationTypeInfo selected" id="txtContainer">
+				아이핀 인증으로 실명 확인을 진행하려면 아래 <span>‘아이핀 인증받기’</span>를 클릭해 주세요.
+				<!-- 
+				# 휴대폰 인증 클릭시 나올 문구 - innerHTML 활용 #
+				소지하고 계신 핸드폰 번호를 입력해서 인증받는 방법입니다.<br />
+				아래 <span>‘휴대폰 인증받기’</span>를 클릭해 주세요.
+				-->
+			</div>
+			<div class="okBtn selected" id="btnContainer">
+				<a href="#"><img src="images/ipinOkBtn.jpg" alt="아이핀으로 인증" /></a>
+				<!--
+				# 휴대폰 인증 클릭시 나올 이미지 - innerHTML 활용 #
+				<a href="#"><img src="images/celPhoneOkBtn.jpg" alt="휴대폰으로 인증" /></a>
+				-->
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

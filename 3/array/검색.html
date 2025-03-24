@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/array.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1>검색 필터링</h1>
+    </header>
+    <div id="search">
+      <input type="text" placeholder="검색어 입력" id="filter-search" />
+    </div>
+    <div id="gallery">
+      <img src="img/p1.jpg" data-tags="Animators, Illustrators" alt="Rabbit" />
+      <img src="img/p2.jpg" data-tags="Photographers, Filmmakers" alt="Sea" />
+      <img src="img/p3.jpg" data-tags="Photographers, Filmmakers" alt="Deer" />
+      <img src="img/p4.jpg" data-tags="Designers" alt="New York Street Map" />
+      <img src="img/p5.jpg" data-tags="Photographers" alt="Guitar" />
+      <img src="img/p6.jpg" data-tags="Designers, Illustrators" alt="Mural Art" />
+      <img src="img/p7.jpg" data-tags="Photographers, Filmmakers" alt="Sydney Train" /> 
+      <img src="img/p8.jpg" data-tags="Designers" alt="Paint Design" />   
+      <img src="img/p9.jpg" data-tags="Animators, Illustrators" alt="Little Prince" />
+    </div>
+   <script>
+       document.addEventListener("DOMContentLoaded",()=>{
+          const images = document.querySelectorAll('#gallery img');
+          const searchBox =  document.querySelector('#filter-search');
+
+        //이미지와 텍스트 저장
+          const cache = Array.from(images).map(img =>({
+            //속성 : 값
+            imgElement : img,//이미지 요소 저장
+
+           // text:img.alt.trim().toLowerCase()
+           text:img.alt.replace(/\s+/g,"").toLowerCase()
+           
+          }))
+
+         console.log(cache)
+
+       //검색어와 이미지 atl 텍스트 비교하여 포함한 이미지 노출
+         const filter = () =>{
+           const query = searchBox.value.trim().toLowerCase();
+
+           cache.forEach(({imgElement,text}) => {
+            imgElement.style.display = text.includes(query) ? "" : 'none'
+           })
+
+         }
+         //검색창에 이벤트 리스너 추가
+         //브라우저에서 input(최신브라우저에서만) 이벤트를 지원하면 사용하고 그렇지 않으면 keyup 이벤트 사용
+         searchBox.addEventListener('input' in searchBox ? 'input' :'keyup',filter)
+       })
+
+
+
+   </script>
+  </body>
+</html>

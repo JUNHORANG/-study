@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/select.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+ 
+</head>
+<body>
+    <!-- selectedIndex , -->
+    <div id="page" >
+        <h2> 패키지 선택</h2>
+        <form method="post" action="#" id="formSignup">
+          
+  
+          <label for="package" class="selectbox"> 패키지를 선택하세요: </label>
+          <select id="package">
+            <option value="annual">1년 ($50)</option>
+            <option value="monthly">1개월 ($5)</option>
+          </select>
+          
+          <div id="packageHint" class="tip"></div>
+  
+          <input type="checkbox" id="terms" />
+          <label for="terms" class="checkbox"> 사용권 계약에 동의합니다</label>
+          <div id="termsHint" class="warning"></div>
+  
+          <input type="submit" value="다음" />
+  
+          </form>
+        </div>
+        <script>
+              (function(){
+                  const elForm = document.getElementById('formSignup');
+                  const elSelectPackge = document.getElementById('package');
+                  const elPackgeHint = document.getElementById('packageHint');
+                  const elTerms = document.getElementById('terms');
+                  const elTermsHint = document.getElementById('termsHint');
+
+                  function packgeHint(){
+                   // console.log(this)
+                   //console.log(this.selectedIndex)
+                   let package = this.options[this.selectedIndex].value;
+                  // console.log(package)
+                  if(package === "monthly") {
+                     elPackgeHint.innerHTML ="1개월 패키지를 선택 하셨습니다."
+                   }else{
+                      elPackgeHint.innerHTML ="1년 패키지를 선택 하셔서 10%할인 적용이 됩니다."
+                   }
+                  }
+
+                  function checkTerms(event){
+                     if(!elTerms.checked){
+                      elTermsHint.innerHTML = "사용권 계약에 동의해야 합니다"
+                      event.preventDefault()
+                     }
+                  }
+
+                  elForm.addEventListener('submit',checkTerms,false)
+                  elSelectPackge.addEventListener('change',packgeHint,false)
+              })();
+         </script>
+</body>
+</html>

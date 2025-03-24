@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+
+<head>
+    <title> new document </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+
+    <style type="text/css">
+        body,
+        div,
+        h3,
+        ul,
+        li,
+        a,
+        p,
+        img {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style-type: none;
+        }
+
+        img {
+            border: none;
+        }
+
+        #movie {
+            border: 1px solid #c3c3c3;
+            width: 600px;
+            height: 900px;
+            overflow: hidden;
+            background: #333;
+        }
+
+        #movie li {
+            float: left;
+            margin: 10px 18px;
+        }
+
+        li img {
+            width: 100px;
+            height: 100px;
+        }
+
+        li a:hover {
+            outline: 5px solid #fff;
+        }
+
+        h3 {
+            font-size: 22x;
+            padding: 20px 0 0 0px;
+            color: #fff;
+            text-align: center;
+        }
+
+        ul {
+            display: inline-block;
+            margin: 5px 0 5px 45px;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        #text {
+            margin-top: 5px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        body {
+            font-size: 12px;
+            color: #333;
+            font-family: "돋움", dotum;
+        }
+
+    </style>
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded",()=>{
+        const mainImg = document.getElementById("photo");
+        const mainText = document.getElementById("text");
+        const imgList = document.querySelectorAll("#list a");
+
+        imgList.forEach((el)=>{
+            el.addEventListener('click',(e)=>{
+                e.preventDefault();
+                const { href, title } = e.currentTarget;
+                mainImg.src = href;
+                mainImg.alt = title;
+                mainText.textContent = title;
+            });
+        });
+
+    });
+    </script>
+</head>
+
+<body>
+    <div id="movie">
+        <h3>[인테리어 소품]</h3>
+        <ul id="list">
+            <li><a href="images/b1.png" title="세련된 감각 디자인스퀘어의 인테리어">
+                    <img src="images/sbtn1.jpg" alt=""/></a></li>
+
+            <li><a href="images/b2.png" title="인테리어 장식소품으로 사용해도 좋은 인테리어소품">
+                    <img src="images/sbtn2.jpg" alt=""/></a></li>
+
+            <li><a href="images/b3.jpg" title="빈티지 감성포스터 인테리어">
+                    <img src="images/sbtn3.jpg" alt=""/></a></li>
+
+            <li><a href="images/b4.png" title="모던한 인테리어를 감각적으로 잘 살릴수가 있는 소품">
+                    <img src="images/sbtn4.jpg" alt=""/></a></li>
+
+            <li><a href="images/b5.png" title="프리미엉 와이드 선박 인테리어 아트월테코">
+                    <img src="images/sbtn5.jpg" alt=""/></a></li>
+
+            <li><a href="images/b6.jpg" title="부자와 교육::가구소품인테리어 디자인">
+                    <img src="images/sbtn6.jpg" alt=""/></a></li>
+        </ul>
+        <p><img id="photo" src="images/b1.png" alt="" /></p>
+        <p id="text">세련된 감각 디자인스퀘어의 인테리어</p>
+    </div>
+
+</body>
+
+</html>

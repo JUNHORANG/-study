@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+  <title> new document </title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+
+	div{border:1px solid #999;padding:10px;margin-top:10px;font-size:20px;}
+	h3{margin:0;padding:5px;margin-bottom:5px;background:#ccc;}
+
+  </style>
+ </head>
+ <body>
+  <div>
+	<h3>1. 숫자 1부터 10까지 출력하세요.</h3>
+	<script type="text/javascript">
+		let result = ''
+		for(let i = 1; i <= 10; i++){
+			result += `${i} \n`;
+		}
+		console.log(result);
+	</script>
+  </div>
+  <div>
+	<h3>2. 숫자 10부터 1까지 출력하세요.</h3>
+	<script type="text/javascript">
+		for(let i = 10; i >= 1; i--){
+			console.log(i);
+		}
+	</script>
+  </div>
+  <div>
+	<h3>3. 숫자 1부터 10중에서 짝수만 출력하세요.</h3>
+	<script type="text/javascript">
+		for(let i = 1; i <= 10; i++){
+			if( i % 2 === 1){
+				continue;
+			}
+			console.log(i);
+		}
+	</script>
+  </div>
+  <div>
+	<h3>4. 숫자 1부터 10중에서 홀수만 출력하세요.</h3>
+	<script type="text/javascript">
+		for(let i = 1; i <= 10; i++){
+			if( i % 2 === 0){
+				continue;
+			}
+			console.log(i);
+		}
+	</script>
+  </div>
+  <div>
+	<h3>5. 숫자 1부터 10까지 5,10을 * 처리해서 출력하세요.</h3>
+	<script type="text/javascript">
+		for(let i = 1; i <= 10; i++){
+			if( i % 5 === 0){
+				console.log(`*${i}`);
+				continue;
+			}
+			console.log(i);
+		}
+	</script>
+  </div>
+  <div>
+	<h3>6. 숫자 1부터 10중에서 3,6,9을 제외하고 출력하세요.</h3>
+	<script type="text/javascript">
+		for(let i = 1; i <= 10; i++){
+			if( i % 3 === 0){
+				continue;
+			}
+			console.log(i);
+		}
+	</script>
+  </div>
+  <div>
+	<h3>7. 구구단 2단을 출력하세요.</h3>
+	<script type="text/javascript">
+		for(let i = 1; i <= 9; i++){
+			console.log(`2 X ${i} = ${2*i}`);
+		}
+	</script>
+  </div>
+  <div>
+	<h3>8. 숫자 1부터 10중에서 3번째 짝수까지만 출력하세요.</h3>
+	<script type="text/javascript">
+		let cnt = 0;
+		for(let i = 1; i <= 10; i++){
+			console.log(i);
+			if(i % 2 === 0) cnt++
+			if(cnt === 3) break;
+		}
+	
+	</script>
+  </div>
+ </body>
+</html>

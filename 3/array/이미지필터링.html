@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>JavaScript 이미지  필터링</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/img.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1> PHOTO</h1>
+    </header>
+    <div id="buttons"></div>
+    <div id="gallery">
+      <img src="img/p1.jpg" data-tags="Animators, Illustrators" alt="Rabbit" />
+      <img src="img/p2.jpg" data-tags="Photographers, Filmmakers" alt="Sea" />
+      <img src="img/p3.jpg" data-tags="Photographers, Filmmakers" alt="Deer" />
+      <img src="img/p4.jpg" data-tags="Designers" alt="New York Street Map" />
+      <img src="img/p5.jpg" data-tags="Photographers, Filmmakers" alt="Trumpet Player" /> 
+      <img src="img/p6.jpg" data-tags="Designers, Illustrators" alt="Typographic Study" />
+      <img src="img/p7.jpg" data-tags="Photographers" alt="Bicycle Japan" />
+      <img src="img/p8.jpg" data-tags="Designers" alt="Aqua Logo" />   
+      <img src="img/p9.jpg" data-tags="Animators, Illustrators" alt="Ghost" />
+    </div>
+    
+    <script >
+      (function(){
+          const images =  document.querySelectorAll('#gallery img');
+          const buttonsContainer = document.getElementById('buttons');
+          const tagImages= {}//빈 객체 선언
+
+          images.forEach(image =>{
+              //console.log(image)
+              //data-* ,dataset: data-접두사를 제외한 속성명을 키로 사용
+              const tags  = image.dataset.tags;
+              //console.log(image.dataset.tags)
+              if(tags){
+                tags.split(',').forEach(tag =>{
+                  //console.log(tag)
+                  if(!tagImages[tag]){
+                   // console.log(tagImages[tag])
+                   tagImages[tag] =[]//빈 배열을 할당하여 배열로 초기화
+                  }
+                  tagImages[tag].push(image);
+                  //console.log( tagImages[tag].push(image))
+                })
+              }
+          })
+    
+          function createAllButton(){
+            const button = document.createElement('button')
+            button.textContent ="모두보기"
+            button.classList.add('active')
+            buttonsContainer.appendChild(button)
+
+            button.addEventListener('click',()=>{
+              showAllImages();
+              activeButton(button)
+            })
+          }
+          createAllButton()
+
+
+
+           function createTagButton(tag,imagesWithTag){
+              console.log(imagesWithTag)
+              const button  = document.createElement('button')
+              button.textContent =`${tag}(${imagesWithTag.length})`
+              buttonsContainer.appendChild(button)
+
+              button.addEventListener('click',()=>{
+                  showImagesForTag(imagesWithTag)
+                  activeButton(button)
+              })
+
+           }
+
+           function showImagesForTag(imagesWithTag){
+            images.forEach(image =>{
+              image.style.display ="none"
+            })
+            imagesWithTag.forEach(image =>{
+               image.style.display=""
+            })
+           }
+
+           function showAllImages(){
+            images.forEach(image =>{
+              image.style.display =""
+            })
+           }
+
+           function activeButton(button){
+            button.classList.add('active')
+            Array.from(button.parentNode.children).forEach(sibling =>{
+              if(sibling !=button){
+                  sibling.classList.remove('active')
+              }
+            })
+
+           }
+
+          Object.keys(tagImages).forEach(tag =>{
+             createTagButton(tag,tagImages[tag])
+             //console.log(tag)
+          })
+
+      })();
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta charset="utf-8" />
+        <meta name="description" content=""/>
+        <meta name="keywords" content=""/>
+        <style>
+            * { margin: 0; padding: 0; }
+            ul { list-style: none; }
+            body { font-size: 12px; font-family: '나눔고딕', sans-serif; }
+            a { text-decoration: none; color: #333; }
+
+            .wrap { width: 900px; margin: 50px auto; height: 500px; }
+            .product_list { border-bottom: 2px solid #222; overflow: hidden; margin-bottom: 10px; }
+            .product_list li { float: left; width: 200px; line-height: 30px; text-align: center; }
+            .product_list li a { font-size: 14px; font-weight: 600; display: block; }
+
+            #product { overflow: hidden; }
+            #product .productImg { float: left; margin-right: 20px; width: 494px; display: block; }
+
+            .product_text { float: left; width: 350px;}
+            .product_text strong { font-size: 22px; }
+            .product_text dl { margin: 20px 0; font-size: 16px; overflow: hidden; }
+            .product_text dl dt { float: left; font-size: 16px; padding: 15px 0; margin-right: 30px; }
+            .product_text dl dd { padding: 15px 0; }
+
+            button { width: 100px; height: 40px; background-color: #222; color: #fff; border: none; margin-right: 10px; }
+
+            /* 구매/취소 버튼 활성화 */
+            .select_btn { background-color: #f2451c; }
+
+            .insertText { margin-top: 30px; background-color: #f1f1f1; padding: 30px; line-height: 1.8; border: 1px solid #d9d9d9; }
+            .insertText strong { font-size: 12px; color: #f2451c; font-weight: 400; }
+
+            .cancelText { margin-top: 30px; color: #f2451c; }
+            .select { position: absolute; top: 30%; left: 40%; font-size: 14px; }
+            .message {
+                width: 100%;
+                height: 150px;
+                background-color: rgba(100,100,100,.1);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 37px;
+                font-size: 18px;
+            }
+            .off { display: none; }
+        </style>
+
+        <script>
+		document.addEventListener("DOMContentLoaded",()=>{
+            const productBtn = document.querySelector("#productLink");
+            const productSection = document.querySelector("#product");
+            const buyBtn = document.querySelector('.btn1');
+            const cancelBtn = document.querySelector('.btn2');
+            const messageBox = document.querySelector('.message');
+
+            buyBtn.addEventListener('click',(e)=>{
+                e.preventDefault();
+                e.target.classList.add('select_btn');
+                messageBox.classList.remove('off');
+                messageBox.innerHTML =`카드사를 선택 해주세요`;
+            })
+
+
+            productBtn.addEventListener("click",(e)=>{
+                document.querySelector(".select").classList.add("off");
+                productSection.classList.remove("off");
+            });
+        })
+            
+            
+        </script>
+    </head>
+    <body>
+        <div class="wrap">
+            <ul class="product_list">
+                <li><a href="#" id="productLink">PRODUCT</a></li>
+                <li><a href="#">EVENT</a></li>
+            </ul>
+
+            <div class="select">PRODUCT를 선택시 제품을 확인 할수 있습니다</div>
+
+            <div class="off" id="product">
+                <span class="productImg"><img src="images/product.png" alt=""/></span>
+
+                <div class="product_text">
+                    <strong>[1+1] 아르간 대용량 클렌징오일</strong>
+
+                    <dl>
+                        <dt>정상가</dt><dd><s>36,000원</s></dd>
+                        <dt>판매가</dt><dd>18,000원</dd>
+                        <dt>제품설명</dt><dd>영양과 보습이 뛰어난 아르간<br/>커넬오일을 담은 건강한 딥클렌징 오일</dd>
+                    </dl>
+
+                    <button type="button" class="btn1">바로구매</button>
+                    <button type="button" class="btn2">취소</button>
+                    <div class="off message"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

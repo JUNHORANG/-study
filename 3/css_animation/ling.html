@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div, img, h2,p{margin: 0; padding: 0;}
+        .line_style{
+            width: 500px;
+            height: 500px;
+            margin: 50px auto;
+            text-align: center;
+            font-size: 18px;
+            position: relative;
+            overflow: hidden;
+
+            background: rgb(33,205,197);
+            background: linear-gradient(72deg, rgba(33,205,197,1) 0%, rgba(79,102,226,1) 70%, rgba(124,0,255,1) 100%);
+        }
+        img{
+            width: 500px;
+            height: 500px;
+        }
+
+        .style{
+            position: absolute;
+            bottom: 200px;
+            right:145px;
+            background-color: rgba(0,0,0,0.5);
+            padding: 10px;
+            color:#fff
+        }
+        .style h2{
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        /* 가로 */
+        .style:before,
+        .style:after {
+            content: '';
+            width: 500px;
+            height: 2px;
+            background-color: #fff;
+            position: absolute;
+        }
+        .style:before{
+            top:0; 
+            left:0;
+            transform: translateX(100%);
+        }
+        .style:after{
+            bottom:0; 
+            right:0;
+            transform: translateX(-100%);
+        }
+
+        /* 세로 */
+        .style div:before,
+        .style div:after{
+            width: 2px;
+            height: 500px;
+            content: '';
+            position: absolute;
+            background-color: #fff;
+        }
+        .style div:before{
+            top:0;
+            left:0;
+            transform: translateY(100%);
+        }
+        .style div:after{
+            bottom:0;
+            right:0;
+            transform: translateY(-100%);
+        }
+        /* hover */
+
+        .line_style:hover img{
+            opacity: 0;
+        }
+
+        .line_style:hover .style:before,
+        .line_style:hover .style:after{
+            transform: translateX(0);
+        }
+
+        .line_style:hover .style div:before,
+        .line_style:hover .style div:after{
+            transform: translateY(0);
+        }
+
+        /* delay */
+        .line_style:hover .style:before{
+            transition-delay: 0.1s;
+        }
+        .line_style:hover .style:after{
+            transition-delay: 0.4s;
+        }
+        .line_style:hover .style div:before{
+            transition-delay: 0.8s;
+        }
+        .line_style:hover .style div:after{
+            transition-delay: 1.2s;
+        }
+
+        /*transition  */
+        .line_style *,
+        .line_style *:before,
+        .line_style *:after{
+            transition: transform  0.8s ease, opacity 2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="line_style">
+        <img src="images/18.png" alt="">
+        <div class="style">
+            <div>
+                <h2>라인 만들기</h2>
+                <p>transition  효과 넣기</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

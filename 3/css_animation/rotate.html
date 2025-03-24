@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, ul, li, a, span, em{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            margin: 50px auto  0 auto;
+            width: 500px;
+        }
+        a{text-decoration: none;
+            color:#222}
+        em{
+            font-style: normal;
+        }
+        li{
+            display: inline-block;
+            width: 150px;
+            text-align: center;
+        }
+
+/* hover */
+        .link_group  a:hover .shadow{
+            animation: iconShadow 2s linear  infinite;
+        }
+
+       @keyframes iconShadow {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+       }
+
+        .link_box .link_icon{
+            display: block;
+            width:70px ;
+            height: 70px;
+            margin: 0  auto;
+            border-radius: 100%;
+            background-color: rgb(255, 255, 255);
+        }
+        .link_box .shadow{
+            display: block;
+            width: 100%;
+            height: 100%;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            border-radius: 100%;
+        }
+
+        .link_icon1{
+            background: url(images/link_icon02-1.png) no-repeat 50% 50%;
+        }
+        .link_icon2{
+            background: url(images/link_icon03-1.png) no-repeat 50% 50%;
+        }
+        .link_icon3{
+            background: url(images/link_icon04-1.png) no-repeat 50% 50%;
+        }
+
+    </style>
+</head>
+<body>
+    <ul>
+        <li class="link_group">
+            <a href="#" class="link_box">
+                <span class="link_icon  link_icon1">
+                    <em class="shadow"></em>
+                </span>
+                <em>일자리소식</em>
+            </a>
+        </li>
+
+        <li class="link_group">
+            <a href="#" class="link_box">
+                <span class="link_icon  link_icon2">
+                    <em class="shadow"></em>
+                </span>
+                <em>전자도서관</em>
+            </a>
+        </li>
+        
+        <li class="link_group">
+            <a href="#" class="link_box">
+                <span class="link_icon  link_icon3">
+                    <em class="shadow"></em>
+                </span>
+                <em>대출도서</em>
+            </a>
+        </li>
+    </ul>
+</body>
+</html>

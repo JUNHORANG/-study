@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body,div,a, img, dl, dt, dd{margin: 0; padding: 0;}
+        img{border: none;}
+        a{text-decoration: none; color: #222;}
+
+        .gallery_wrap{
+            width: 1200px;
+            margin: 50px auto 0  auto;
+        }
+        .gallery_wrap  > div{
+            float: left;
+            width: 250px;
+            height: 250px;
+            border: 1px solid #b5b5b5;
+            box-sizing: border-box;
+            margin-right: 50px;
+        }
+        .gallery_wrap div.thumb{
+            width: 248px;
+            height: 150px;
+            overflow: hidden;
+            margin-bottom: 10px;
+
+        }
+        .text{padding: 10px;
+             box-sizing: border-box;}
+
+        .text dt{
+            text-align: center;
+            font-size: 18px;
+        }
+
+        .gallery_wrap > div .thumb img{ transform: scale(1, 1); transition:transform 0.5s; width:100%;}
+
+        .gallery_wrap > div:hover {border:1px solid tomato}
+        .gallery_wrap > div:hover .thumb img {transform: scale(1.2, 1.2);}
+
+    </style>
+</head>
+<body>
+    <!-- 
+    //😀
+        <div>  
+            <a href="#"></a>
+        </div>
+
+    //😀
+        <a href="#">
+            <div>
+            </div>
+        </a>
+    //😀
+        <ul>
+            <li><a href="#"></a></li>
+        </ul>
+
+    //😫
+        <ul>
+            <a href="#"><li></li></a>
+        </ul>
+    
+    -->
+    <div class="gallery_wrap">
+                <div class="gallery">
+                    <a href="#">
+                        <div class="thumb">
+                            <img src="images/180688_image2_1.jpg" alt="">
+                        </div>
+                        <dl class="text">
+                            <dt>코스여행</dt>
+                            <dd>봅슬레이 눈썰매로 겨울이 즐겁다.</dd>
+                        </dl>
+                    </a>
+                </div>
+
+                <div class="gallery">
+                    <a href="#">
+                    <div class="thumb">
+                        <img src="images/2043224_image2_1.jpg" alt="">
+                    </div>
+                    <dl class="text">
+                        <dt>코스여행</dt>
+                        <dd>봅슬레이 눈썰매로 겨울이 즐겁다.</dd>
+                    </dl>
+                    </a>
+            </div>
+
+            <div class="gallery">
+                <a href="#">
+                <div class="thumb">
+                    <img src="images/2043556_image2_1.jpg" alt="">
+                </div>
+                <dl class="text">
+                    <dt>코스여행</dt>
+                    <dd>봅슬레이 눈썰매로 겨울이 즐겁다.</dd>
+                </dl>
+                </a>
+        </div>
+
+        <div class="gallery">
+            <a href="#">
+            <div class="thumb">
+                <img src="images/2043799_image2_1.JPG" alt="">
+            </div>
+            <dl class="text">
+                <dt>코스여행</dt>
+                <dd>봅슬레이 눈썰매로 겨울이 즐겁다.</dd>
+            </dl>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

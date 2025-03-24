@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/array.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header>
+      <h1>테이블 정렬</h1>
+    </header>
+
+    <div class="about">
+  
+    <table class="sortable">
+      <thead>
+        <tr>
+          <th data-sort="name">장르</th>
+          <th data-sort="name">제목</th>
+          <th data-sort="duration">재생 시간</th>
+          <th data-sort="date">날짜</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>애니메이션</td>
+          <td>Wildfood</td>
+          <td>3:47</td>
+          <td>2014-07-16</td>
+        </tr>
+        <tr>
+          <td>영화</td>
+          <td>The Deer</td>
+          <td>6:24</td>
+          <td>2014-02-28</td>
+        </tr>
+        <tr>
+          <td>애니메이</td>
+          <td>The Ghost</td>
+          <td>11:40</td>
+          <td>2012-04-10</td>
+        </tr>
+        <tr>
+          <td>영화</td>
+          <td>Animals</td>
+          <td>6:40</td>
+          <td>2005-12-21</td>
+        </tr>
+        <tr>
+          <td>애니메이션</td>
+          <td>Wagons</td>
+          <td>21:40</td>
+          <td>2007-04-12</td>
+        </tr>
+      </tbody>
+    </table>
+
+      <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+          // 일반변수  let name =function(){}
+          /*객체메서드  let compare ={
+                            name:function(){}
+                            date:function(){}
+                      }
+          */
+          let compare ={
+              name:function(a,b){
+                  a =a.replace(/^the /i,'') 
+                  b =b.replace(/^the /i,'') 
+                  return a < b ? -1 : a > b ? 1 :0
+              },
+
+              duration:function(a,b){
+                let timeA =a.split(':').map(Number);//"분:초문자열을 숫자로"
+                let timeB =b.split(':').map(Number);
+                let totalA =  timeA[0]*60 +timeA[1]//분을 초로 변환 합산 3:20   3*60   + 20  = 200
+                let totalB  =  timeB[0]*60 +timeB[1]//  
+                return     totalA -   totalB //초단위 비교        
+              },
+
+              date:function(a,b){
+                 return new Date(a) - new Date(b) //날짜 객체로 변환후 비교
+              }
+          }
+
+
+
+          document.querySelectorAll('.sortable').forEach(function(table){
+            let tbody = table.querySelector('tbody')//본문
+            let headers =  table. querySelectorAll('th')//행
+            let rows =  Array.from(tbody.querySelectorAll('tr'))//열 ->배열
+
+            headers.forEach(function(header, columnIndex) {
+                 header.addEventListener('click',function(){
+                    let sortType= header.getAttribute('data-sort')//속성값 가져오기
+                    let isAscending = header.classList.contains('ascending')//현재 정렬 방향 확인 토글
+
+
+                    Array.from(header.parentElement.children).forEach(function(sibling){
+                      //console.log(header.parentElement.children) th
+                     sibling.classList.remove('ascending','descending')
+                    })
+
+
+                    if(isAscending) {
+                      header.classList.remove('ascending')//오름차순 클래스제거
+                      header.classList.add('descending')//내림차순 클래스 추가
+                      rows.reverse(); //*****rows 인데 row로 코딩 되었음******
+
+                    }else{
+
+                        header.classList.remove('descending')//
+                        header.classList.add('ascending')//
+
+                          //hasOwnProperty() 객체가 특정 속성을 가지고 있는지 확인하는 메서드
+
+                          //******* 텍스트를 받는곳은 if esle 안에 있어야함*****
+                        if(compare.hasOwnProperty(sortType)){
+                          // console.log(sortType)  name, duration, date
+                          rows.sort(function(rowA, rowB){
+                            let  cellA =rowA.cells[columnIndex].textContent;
+                            let  cellB =rowB.cells[columnIndex].textContent;
+                            //console.log(rowA.textContent)
+                            return compare[sortType](cellA,cellB)//compare 객체의 sortType에 해당하는 비교 메서드 호출
+                          })
+                        }
+                    }
+
+                     rows.forEach(function(row){
+                      tbody.appendChild(row)
+
+                    })
+                 })
+             })
+            
+          })
+        })
+
+      </script>
+
+
+  </body>
+</html>

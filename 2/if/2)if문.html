@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>Document</title>
+
+    <style type="text/css">
+        body,
+        div,
+        p,
+        ul,
+        li,
+        a,
+        img {
+            margin: 0;
+            padding: 0
+        }
+
+        ul {
+            list-style: none
+        }
+
+        img {
+            border: none
+        }
+
+        a {
+            text-decoration: none
+        }
+
+        .banner {
+            position: relative;
+            width: 697px;
+            height: 326px;
+            overflow:hidden;
+            margin: 50px auto;
+        }
+
+        #bannerList {
+            width: 3485px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #bannerList li {
+            float: left;
+        }
+
+        .banner p {
+            position: absolute;
+            top: 150px;
+            z-index: 100
+        }
+
+        .banner .leftbtn {
+            left: 0;
+        }
+
+        .banner .rightbtn {
+            right: 0
+        }
+
+    </style>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded",()=>{
+            //이미지 크기 증가값
+            const imgWidth = 697;
+            const leftBtn = document.querySelector('#leftBtn');
+            const rightBtn = document.querySelector('#rightBtn');
+            const bannerList = document.querySelector('#bannerList');
+            const imgLength = bannerList.querySelectorAll('li').length - 1;
+            let isNum = 0; 
+
+            leftBtn.addEventListener('click',(e)=>{
+                e.preventDefault();
+                isNum++;
+                if(isNum > imgLength){
+                    isNum = 0;
+                }
+                animate(isNum);
+            });
+            rightBtn.addEventListener('click',(e)=>{
+                e.preventDefault();
+                isNum--;
+                if(isNum < 0){
+                    isNum = imgLength;
+                }
+                animate(isNum);
+            });
+            
+            const animate = (num)=>{
+                imgWidth * num
+                bannerList.style.left = `-${imgWidth * num}px`;
+            }
+
+        });
+       
+    </script>
+
+</head>
+
+<body>
+    <div class="banner">
+        <p class="leftbtn"><a href="#" id="leftBtn"><img src="images/leftbtn.jpg" alt="왼쪽이동" /></a></p>
+        <ul id="bannerList">
+            <li><a href="#"><img src="images/img1.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/img2.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/img3.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/img4.jpg" alt="" /></a></li>
+            <li><a href="#"><img src="images/img5.jpg" alt="" /></a></li>
+        </ul>
+        <p class="rightbtn"><a href="#" id="rightBtn"><img src="images/rightbtn.jpg" alt="오른쪽 이동" /></a></p>
+    </div>
+</body>
+
+</html>

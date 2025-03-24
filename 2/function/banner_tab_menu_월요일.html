@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml">  
+ <head>
+    <title> new document </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+    <meta name="robots" content="all" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <style type="text/css">
+        body,
+        div,
+        h3,
+        ul,
+        li,
+        a,
+        img,
+        dl,
+        dt,
+        dd {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-size: 12px;
+            color: #333;
+            font-family: "돋움", dotum;
+        }
+
+        img {
+            border: 0 none;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .user_tab {
+            width: 670px;
+            height: 162px;
+            border: 1px solid #c3c3c3;
+            position: relative;
+            margin: 50px auto;
+            box-sizing: border-box;
+            padding: 1px;
+        }
+
+        .user_tab .user_tab_list {
+            position: absolute;
+            top: 0;
+            left: 166px;
+            padding: 20px 0 0 30px;
+        }
+
+        .user_tab .user_tab_list li {
+            line-height: 20px;
+            float: left;
+            width: 150px;
+        }
+    </style>
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", () => {
+    const ddElements = document.querySelectorAll('.user_tab > dd');
+
+    // 첫 번째 dd 요소를 제외하고 숨김
+    for (const dd of ddElements) {
+        if (dd !== ddElements[0]) {
+            dd.style.display = 'none';
+        }
+    }
+
+    const anchors = document.querySelectorAll('.user_tab > dt > a');
+    
+    for (const anchor of anchors) {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            const clickDt = e.currentTarget.parentElement; // 클릭한 dt 요소 찾음
+            const targetDd = clickDt.nextElementSibling; // 클릭한 dt 요소의 다음 dd 찾음
+
+            // 모든 dd 요소 숨기기
+            ddElements.forEach(dd => dd.style.display = 'none');
+
+            // 선택한 dd 요소 보이기
+            targetDd.style.display = "block";
+
+            // 활성화된 탭 이미지를 비활성화()
+            document.querySelectorAll('.user_tab > dt > a > img').forEach(img => {
+                img.src = img.src.replace('_on.gif', '_off.gif');
+            });
+
+            // 비활성화된 탭 이미지를 활성화()
+            const img = clickDt.querySelector('img');
+            img.src = img.src.replace('_off.gif', '_on.gif');
+        });
+        }
+    });
+    </script>
+</head>
+
+<body>
+    <dl class="user_tab">
+        <dt><a href="#"><img src="images/left_tab1_on.gif" alt="시민" /></a></dt>
+        <dd class="user_tab_list ">
+            <ul>
+                <li><a href="#">행정정보공개1</a></li>
+                <li><a href="#">새주소검색1</a></li>
+                <li><a href="#">시민제안공모1</a></li>
+                <li><a href="#">공직자 부조리신고1</a></li>
+                <li><a href="#">행정정보공개1</a></li>
+                <li><a href="#">새주소검색1</a></li>
+                <li><a href="#">시민제안공모1</a></li>
+                <li><a href="#">공직자 부조리신고1</a></li>
+            </ul>
+        </dd>
+
+        <dt><a href="#"><img src="images/left_tab2_off.gif" alt="사업자" /></a></dt>
+        <dd class="user_tab_list  ">
+            <ul>
+                <li><a href="#">행정정보공개2</a></li>
+                <li><a href="#">새주소검색2</a></li>
+                <li><a href="#">시민제안공모2</a></li>
+                <li><a href="#">공직자 부조리신고2</a></li>
+                <li><a href="#">행정정보공개2</a></li>
+                <li><a href="#">새주소검색2</a></li>
+                <li><a href="#">시민제안공모2</a></li>
+                <li><a href="#">공직자 부조리신고2</a></li>
+            </ul>
+        </dd>
+
+        <dt><a href="#"><img src="images/left_tab3_off.gif" alt="관광객" /></a></dt>
+        <dd class="user_tab_list  ">
+            <ul>
+                <li><a href="#">행정정보공개3</a></li>
+                <li><a href="#">새주소검색3</a></li>
+                <li><a href="#">시민제안공모3</a></li>
+                <li><a href="#">공직자 부조리신고3</a></li>
+                <li><a href="#">행정정보공개3</a></li>
+                <li><a href="#">새주소검색3</a></li>
+                <li><a href="#">시민제안공모3</a></li>
+                <li><a href="#">공직자 부조리신고3</a></li>
+            </ul>
+        </dd>
+        <dt><a href="#"><img src="images/left_tab4_off.gif" alt="유용한사이트" /></a></dt>
+        <dd class="user_tab_list  ">
+            <ul>
+                <li><a href="#">행정정보공개4</a></li>
+                <li><a href="#">새주소검색4</a></li>
+                <li><a href="#">시민제안공모4</a></li>
+                <li><a href="#">공직자 부조리신고4</a></li>
+                <li><a href="#">행정정보공개4</a></li>
+                <li><a href="#">새주소검색4</a></li>
+                <li><a href="#">시민제안공모4</a></li>
+                <li><a href="#">공직자 부조리신고4</a></li>
+            </ul>
+        </dd>
+    </dl>
+</body></html>

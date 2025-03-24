@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    //BOM(Browser Object Model) : 브라우저 객체 모델
+    //setInterval : 매 시간마다 콜백 함수 실행 
+    let interval = setInterval(function(){
+      console.log('1초 간격');
+    },1000);
+    //setTimeout : 두 번째 인자에 들어간 시간(1밀리초) 후 콜백 함수 실행 
+    setTimeout(function(){
+      clearInterval(interval);
+      console.log('clearInterval');
+    },5000)
+  </script>
+  
+</body>
+</html>

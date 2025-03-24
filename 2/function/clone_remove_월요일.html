@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+	ul,body,div,li,a, img,span,h3{margin:0;
+								padding:0;}
+	body{font-size:12px;}
+	ul{list-style-type:none;
+		height:330px;
+		width:1000px;
+	}
+
+	li{float:left;
+			height:330px;
+			width:227px;}
+	a{text-decoration:none;}
+
+	span{color:#999;
+		font-weight:bold;
+		display:block;
+		text-align:center;}
+
+	h3{font-size:26px;
+		color:#c9c9c9;
+		text-decoration:underline;
+		}
+
+	.attrwrap{ width:222px;
+		margin:50px auto;
+		position:relative;
+		overflow:hidden;
+		height:330px;
+		border:1px solid #003399;
+		padding:5px;
+		border-radius:5px;
+	}
+  </style>
+  <script language="javascript" type="text/javascript">
+		document.addEventListener('DOMContentLoaded',()=>{
+			const ulElement=document.querySelector('#list');
+			//element.querySelector() // 자신에서 자식 방향으로 탐색
+			ulElement.addEventListener('click',(e)=>{
+				const target = e.target.closest('li > a');
+				//element.closest() // 자신에서 부모 방향으로 탐색
+				e.preventDefault();
+				if(!target) return
+				const listItem = target.parentElement;
+				const cloneItem = listItem.cloneNode(true);
+				//cloneNode()인터페이스 의 메서드는 이 Node메서드가 호출된 노드의 복제본을 반환, cloneNode(true) 복제, cloneNode(false) 복제하지 않음
+				ulElement.appendChild(cloneItem);
+				listItem.remove();//원본 삭제
+			});
+		});
+   </script>
+ </head>
+ <body>
+  <div class="attrwrap">
+  	<h3>clone() mothod</h3>
+	<ul id="list">
+		<li>
+			<a href="#" ><img src="images/clone1.jpg"  alt=" " />
+			<br/><span>황산에서 일출</span></a>
+		</li>
+		<li>
+			<a href="#" ><img src="images/clone2.jpg"  alt=" "  />
+			<br/><span>상해의 가을 하늘</span></a>
+		</li>
+		<li>
+			<a href="#" ><img src="images/clone3.jpg"  alt=" " />
+			<br/><span>크로아티아 일주</span></a>
+		</li>
+		<li>
+			<a href="#" ><img src="images/clone4.jpg"  alt=" " />
+			<br/><span>미소의 나라 미얀마</span></a>
+			
+		</li>
+	</ul>
+  </div>
+ </body>
+</html>

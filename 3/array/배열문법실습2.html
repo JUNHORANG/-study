@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let shoppingList =[
+            {item:'우유',quantity:2, price:2000},
+            {item:'빵',quantity:1, price:3000},
+            {item:'계란',quantity:12, price:100},
+            {item:'사과',quantity:3, price:1500},
+        ]
+
+        //마지막에  item 음료수, quantity:1, price:2500 을 추가
+        shoppingList.push({item:'음료수',quantity:1, price:2500})
+        console.log(shoppingList)
+
+        //가격이 2000원이하인 항목만 필터링
+        let itemFilter = shoppingList.filter(item =>item.price <=2000);
+        console.log(itemFilter)
+        //항목의 총 비용을 계산 15200
+        let totalCost =  shoppingList
+        .map(item =>item.quantity *item.price)
+        .reduce((acc,cost) =>acc + cost,0)
+        console.log(totalCost)
+
+        //item만 추출
+        let itemName = shoppingList.map(item =>item.item)
+        console.log(itemName)
+
+        //수량을 기준으로 정렬
+        shoppingList.sort((a,b) =>b.quantity - a.quantity)
+        console.log(shoppingList)
+
+        //마지막 항목 삭제
+        let removeItem =shoppingList.pop();
+        console.log(shoppingList)
+
+        //모든 항목에 할인율 10% 적용
+        let discountedList = shoppingList.map(item =>({
+                ...item,
+                price:item.price *0.9
+        }))
+        console.log(discountedList)
+    </script>
+</body>
+</html>

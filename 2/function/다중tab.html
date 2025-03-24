@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div,ul,li,h3, a{margin: 0; padding: 0;}
+        ul{list-style: none;}
+        a{text-decoration: none; color:#222}
+        body{font-family: '본고딕','돋움',dotum,sans-serif;}
+
+        #tab1,#tab2{
+            width: 300px;
+            position:relative;
+            margin: 50px auto;
+            height: 150px;
+        }
+        .tabContainer > li{
+            float: left;
+        }
+        h3{
+            border: 1px solid #c3c3c3;
+            width: 100px;
+            height: 24px;
+            text-align: center;
+            background-color: #e0e0e0;
+            line-height: 24px;
+            font-size: 14px;
+        }
+        .on{background-color: #09f;}
+        .on a{color:#fff}
+        .tabContainer ul{
+                position: absolute;
+                top:30px ;
+                left:0;
+        }
+        .tabContainer ul li{
+            line-height: 2;
+        }
+        .none{
+            display: none;
+        }
+
+.section{
+    height: 200px;
+    width: 100%;
+    background-color: #09f;
+}
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            const tabContainer= document.querySelectorAll('.tabContainer');
+
+            tabContainer.forEach((tabMenu)=>{
+                let currentNum=0;
+                const tabTitle = tabMenu.querySelectorAll('h3>a');
+                const tabUl = tabMenu.querySelectorAll('ul');
+
+                tabTitle.forEach((tab,i)=>{
+                    tab.num = i;
+                    tab.addEventListener('click',(e)=>{
+                        e.preventDefault();
+                        const num = e.currentTarget.num;
+                        //console.log(e.currentTarget.num)
+                        if(currentNum !==num){
+                            tabTitle[currentNum].parentElement.className="";
+                            tabUl[currentNum].style.display = "none";
+                            tabTitle[num].parentElement.className="on";
+                            tabUl[num].style.display = "block";
+                            currentNum = num;
+                        }
+                    })
+                })
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div id="tab1">
+        <ul   class="tabContainer">
+            <li>
+                <h3 class="on"><a href="#">공지사항</a></h3>
+                <ul>
+                    <li><a href="#">공지사항 입니다</a></li>
+                    <li><a href="#">공지사항 입니다</a></li>
+                    <li><a href="#">공지사항 입니다</a></li>
+                    <li><a href="#">공지사항 입니다</a></li>
+                </ul>
+            </li>
+            <li>
+                <h3 ><a href="#">고시공고</a></h3>
+                <ul class="none">
+                    <li><a href="#">고시공고 입니다</a></li>
+                    <li><a href="#">고시공고 입니다</a></li>
+                    <li><a href="#">고시공고 입니다</a></li>
+                    <li><a href="#">고시공고 입니다</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+<div class="section">constents</div>
+    <div id="tab2">
+        <ul   class="tabContainer">
+            <li>
+                <h3 class="on"><a href="#">입찰공고</a></h3>
+                <ul>
+                    <li><a href="#">입찰공고 입니다</a></li>
+                    <li><a href="#">입찰공고 입니다</a></li>
+                    <li><a href="#">입찰공고 입니다</a></li>
+                    <li><a href="#">입찰공고 입니다</a></li>
+                </ul>
+            </li>
+            <li>
+                <h3 ><a href="#">고시공고</a></h3>
+                <ul class="none">
+                    <li><a href="#">고시공고 입니다</a></li>
+                    <li><a href="#">고시공고 입니다</a></li>
+                    <li><a href="#">고시공고 입니다</a></li>
+                    <li><a href="#">고시공고 입니다</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

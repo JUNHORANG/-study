@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        --------------------------------- 
+        명시적(선언적)함수 :
+           function 함수이름(){
+                    실행문
+           }
+        함수 이름이 있다
+        함수호출 : 함수이름()
+        실행순서 : 다른 내용을 읽고 해석하기 전에 먼저 읽고 해석
+
+         ---------------------------------
+        익명함수 : 
+        let 변수이름 = function(){
+            실행문
+        }
+        함수 이름이 없다
+        함수호출 : 변수이름()
+        실행순서 :  스크립트 태그 내부의 내용을 위에서 아래로 읽어 해석
+
+        --------------------------------------
+        함수란 ? 객체 자료형중 하나로 특정한 기능을 제공하기 위한 코드의 집합으로 호출을 통해 결과값을 얻음
+        매개변수 : 함수를 호출 하면서 함수의 입력으로 넘겨주는 값
+        리턴값 : 호출한 함수가 돌려주는 값
+        arguments : 함수에서 입력받은 매개변수를 저장하는 배열
+        클로저 : 종료된 외부 함수의 변수를 참조하는 함수
+    -->
+
+<script>
+     //호출
+     funName()//명시적 함수!!! 호출
+    // removeFunName() 오류 removeFunName 찾을수 없다
+    //명시적 (선언적)함수
+    function funName(){
+            console.log('명시적 함수!!!!')
+    }
+    //익명함수
+    let removeFunName =  function(){
+        console.log('익명함수!!!!')
+    }
+    removeFunName()//익명함수!!! 호출
+
+    //함수의 매개변수 : 함수를 호출할때 값
+    function funNum2(name){
+        console.log('매개변수',name)
+    }
+    //함수 리턴: 함수를 실행 하면서 얻어지는 값
+    function funNum4(name){
+        return `안녕하세요${name}`
+    }
+      
+    function funName3(x,y,z){//매개변수: 함수를 호출할때 값을 지정 x,y,z
+        console.log('x:'+x)
+        console.log('y:'+y)
+        console.log('z:'+z)
+     
+        let result =x+y+z; //지역변수
+        return result; //반환값
+
+    }
+    let num =0;//전역변수
+    num = funName3(1,2,3);//매개변수에 전달하는 인자값
+    console.log('total'+ num)
+
+   //함수는 또다른 함수를 반환 할수 있다
+   /*
+        function 함수명(){
+            실행문
+            return function(){
+                실행문
+            }
+        }
+   */
+    
+    function office(){
+       return function(x){
+        //함수 반환
+         for(let i=1; i<10; i++){
+            console.log(x + 'x '+i+'='+(x *i))
+         }
+       }
+    }
+    let returnFun =office();
+       returnFun(2);
+
+    //내부함수 : 함수의 코드 내부 정의된 함수
+    /*
+      function 외부함수(){
+            function 내부함수1(){
+                실행문
+            }
+            function 내부함수2(){
+                실행문
+            }
+      }
+    */
+    function outFun(width,height){//매개변수 widht,height
+            console.log('삼각형 면적'+ triangle())
+            console.log('사각형 면적'+ quadrangle())
+
+            //함수1 삼각형면적
+            function triangle(){
+                return (width * height) /2
+            }
+            //함수2  사각형면적
+            function quadrangle(){
+                return width * height
+            }
+         }
+         outFun(3,4)
+
+        //기본함수
+        /*
+           function  함수명(){
+                실행문
+           }
+        */
+        function add(a,b){
+            return a+b;
+        }
+        console.log(add(2,3))//5
+
+        //화살표함수
+        /*
+            function 키워드 대신 => 문자를 사용해서 함수를 구현
+            화살표의 좌측에는 함수의 파라미터, 우측ㅇ는 코드블록
+        */
+       const  multiply = (a,b) => a*b;
+       console.log(multiply(4,6))//24
+
+       const adds = (a,b) =>{
+         return a + b;
+       }
+    //    const add =(a,b) => a+b;
+       const sum = adds(2,3);
+       console.log(sum)//5
+
+    //매개변수에 기본값을 갖는 함수
+        function green(name ="홍길동"){
+            return `안녕하세요,${name}!~`;
+        }
+        console.log(green())//안녕하세요 홍길동!~
+        console.log(green('홍길자'))//안녕하세요 홍길자!~
+</script>
+
+<script>
+     //즉시 실행되는 함수
+     (function(){
+            console.log('즉시 실행 함수가 호출!')
+        })();
+</script>
+<script>
+    //재귀함수
+    /*
+        재귀함수는 자기 자신을 호출하는 함수, 조건이 만족할때 까지 반복해서 호출
+        종료조건이 필요하고 종료 조건이 없을경우 무한 루프가 발생한다
+    */
+      function factorial(n){
+        if(n === 0) return 1; //종료조건
+        return n* factorial(n -1);// 재귀호출
+      }
+       console.log(factorial(5));
+</script>
+<script>
+    //콜백함수 
+    /*다른 함수의 매개변수로 전달되어 특정 시점에 실행 되는 함수*/
+     function red(name, callback){
+        callback(`안녕하세요${name}!`);
+     }
+     red('홍길동',console.log)
+     //첫번째 인수: 홍길동:name 
+     //두번째 인수console.log: callback 
+</script>
+<script>
+    //클로저  : 외부함수의 변수에 접근할수 있는 내부함수로 함수가 생성될때 스코프를 기억하여, 함수가 
+    //실행된 이후에도 변수값을 유지
+     function counter(){
+        let count = 0;//외부함수 변수
+        return function(){//내부함수
+                count++;//외부함수 변수에 접근
+                return count;
+        }
+     }
+     const coun = counter(); //함수 실행후 내부 함수 반환
+     console.log(coun())
+     console.log(coun())
+    //  count값이 계속 유지되어 증가한다
+
+    //클로저의 특징
+    /*
+     외부에서 접근 불가능 -변수은닉 ,  상태관리 (데이터유지), 독립적인 변수공간 생성(고유한 실행환경유지)
+    */
+     function userPassword(password){
+        return function(user){
+            return user === password ? "로그인가능" :"비밀번호 확인"
+        }
+     }
+     const checkPassword = userPassword('1234');
+     console.log(checkPassword('11111'))
+     console.log(checkPassword('1234'))
+</script>
+<script>
+    //비동기 함수
+    //fetchData() :사용자 정의함수
+        /*
+            promise:네트워크 요청, 시간이 걸리는 작업등에 사용
+            async 키워드는 promise 를 반환하는 함수
+            setTimeOut(시간):지정된 시간후 한번 실행
+        */
+       async function fetchData(){
+         return new Promise(resolve =>{
+            setTimeout(() =>resolve("데이터 로드 완료"),2000)
+         })
+       }
+    //    2초후 데이터 로드 완료를 반환 설정
+    //getData():사용자 정의함수
+    /*
+        async함수 내부에 await 함수를 호출 
+    */
+   async function getData(){
+        console.log('데이터를 가져오는중...');
+        const data =await fetchData();
+        console.log(data)
+       }
+       getData();
+    //    getData();실행하면 데이터를 가져오는중 이 즉시출력되고 2초후에 데이터 로드 완료가 출력
+</script>
+<script>
+    //try...catch : 예외처리 비동기 함수에서 에러가 발생할 경우 
+    async function fetchData() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            let success = Math.random() > 0.5; // 50% 확률로 성공/실패
+            success ? resolve("데이터 로드 완료!") : reject("데이터 로드 실패!");
+        }, 2000);
+    });
+}
+
+async function getData() {
+    try {
+        console.log("데이터를 가져오는 중...");
+        const data = await fetchData();
+        console.log(data);
+    } catch (error) {
+        console.log("에러 발생:", error);
+    }
+}
+
+getData();
+</script>
+<script>
+    //생성자 함수를 이용하여 새로운 객체를 만드는 방법
+    //person 생성자 함수 정의(매개변수)
+    function person(name, age){
+          //console.log(this)
+          this.name = name;//name 속성 설정
+          this.age = age;//age 속성 설정
+    }
+    //person 생성자 함수를 이용하여 객체를 생성
+    const p = new person('홍길동',20);
+    console.log(p, p.name, p.age)
+    //생성된 객체 및 속성값을 출력
+
+    const b = new person('둘리',10);
+    console.log(b,b.name,b.age)
+
+    //화살표 함수로 생성자 함수를 만들때(오류) this를 사용할수 없다
+    const dog =(name, age)=>{
+        console.log(this);
+        this.name = name;
+        this.age = age;
+    }
+    const d = new dog('멍멍이',16);
+    console.log(d,d.name, d.age)
+</script>
+ 
+
+
+</body>
+</html>

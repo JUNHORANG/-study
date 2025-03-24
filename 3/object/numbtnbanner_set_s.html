@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style type="text/css">
+    body, div, span, ul,li, a, img,p{margin:0; padding:0}
+    ul{list-style-type:none;}
+    img{border:none}
+    a{text-decoration:none;
+      color:#333}
+    .left_num,.right_num{color:#f00; margin-bottom:5px; }
+
+    .banner{width:342px;
+                height:190px;
+                overflow:hidden;
+                margin:50px auto;
+                position:relative;
+                border:1px solid #d9d9d9;
+                /*padding:20px;*/} /*삭제*/
+
+    .banner_list li{position:absolute; left:0;top:0;} /*추가*/
+
+    .left{position:absolute;
+              top:40%;
+              left:0;
+              border:1px solid #d9d9d9;
+              padding:15px 10px 10px 10px;
+            background:#fff;z-index:9998;}
+    .left span.leftBtn{background:url(images/arrow_left.png) no-repeat left 0px ;
+                            width:8px;
+                            height:11px;
+                            display:inline-block;
+                            padding-bottom:5px;} 
+
+    .left .leftBtn,
+    .right .rightBtn{text-indent:-999px;
+                        display:inline-block;
+                          }
+    .right span.rightBtn{background:url(images/arrow_right.png) no-repeat right 0px ;
+                            width:8px;
+                            height:11px;
+                            display:inline-block;
+                            padding-bottom:5px;}
+
+    .left:hover .leftBtn{background-position:left -16px;}
+                    
+    .right:hover .rightBtn{background-position:right -16px;}
+
+    .right{position:absolute;
+              top:40%;
+              right:0;
+              border:1px solid #d9d9d9;
+              padding:15px 10px 10px 10px;
+              background:#fff;z-index:9999;}
+    p{display:inline;}   
+    .on{display:none}
+  </style>
+
+  <script  type="text/javascript">
+    document.addEventListener("DOMContentLoaded",() =>{
+        const bannerList = document.querySelectorAll('#bannerList li');
+        const leftBtn =  document.querySelector('.left')
+        const rightBtn =  document.querySelector('.right')
+        const leftNum =  document.querySelector('.left_num')
+        const rightNum =  document.querySelector('.right_num')
+
+        let currentIndex =0;
+        const totalSlides = bannerList.length;
+        const slideWidth = 342;
+
+        //초기설정
+        bannerList.forEach((li,i)=>{
+          li.style.position = "absolute";
+          li.style.left =  i === 0 ? "0px" :slideWidth +"px"
+        })
+
+
+          let isAnimating = false
+        const changeSlide = (nextIndex, direction) =>{  
+            if(isAnimating) return ;
+            isAnimating = true;
+
+            const currentSlide =  bannerList[currentIndex]; 
+            const nextSlide =  bannerList[nextIndex]
+           const  moveDist = direction ==="next" ? slideWidth : -slideWidth;  //nextSlide 시작값
+            nextSlide.style.left =`${moveDist}px`;
+            nextSlide.style.display = "block"
+
+            animateSlide(nextSlide,0)
+            animateSlide(currentSlide, -moveDist,
+              () =>{
+                currentSlide.style.display="none";
+                isAnimating = false;
+              }
+            )
+
+           
+            leftNum.textContent =rightNum.textContent = nextIndex +1;
+            currentIndex = nextIndex
+
+        }
+
+        const animateSlide = (element, target, callback) =>{
+          //element : 대상, target : 슬라이드가 끝나야 하는 목표 지점, callback : 애니메이션이 끝난후 실행될 콜백함수
+            const start =  parseInt(element.style.left);//342px - > 342
+
+            const startTime = performance.now(); //함수가 시작 되는 시점에 시간을 저장
+           
+            const step =(currentTime)=>{
+//currentTime - startTime : 이전 프레임의 렌더링 종료시간 -  함수가 시작 되는 시잠의 시간 을 300으로 나누어서 애니메이션을 하는데 1일 되는지 계산을 함
+              let progress = Math.min((currentTime - startTime) / 300,1);
+              element.style.left = start +(target - start) * progress +'px';
+                //element에 위치르 목표하는 지점까지 한번에 이동하는게 아니고 progress 를 곱해서 목표지점까지 나눠서 이동하게 처리함
+
+                //progress 1보다 작으면 아직 목표 지점에 도달한게 아니기 대문에 재귀함수로 step,을 호출해서 다음 프레임 애니메이션 진행
+              if(progress <1) {
+                
+                requestAnimationFrame(step)
+              }else { //progress가 1이면 목표 지점에 도달했기 때문에 애니메이션 종료
+                if(callback) {
+                  callback();  //등록된 콜백 함수가 있다면 호출 
+                }
+              }
+            }
+            requestAnimationFrame(step)
+
+        }
+
+        leftBtn.addEventListener('click',(event)=>{
+          let  nextIndex  =currentIndex - 1
+            if(nextIndex < 0 ){
+                 nextIndex =totalSlides -1
+            } 
+            changeSlide(nextIndex, "prev")
+        })
+
+        rightBtn.addEventListener('click',(event)=>{
+            let  nextIndex  =currentIndex + 1
+            if(nextIndex > totalSlides -1){
+                 nextIndex =0
+            } 
+            changeSlide(nextIndex, "next")
+        });
+
+
+        [leftBtn,rightBtn].forEach((btn) =>{
+          btn.addEventListener("mouseenter",(event) =>{
+            event.currentTarget.querySelector('p').classList.remove('on');
+          });
+          btn.addEventListener("mouseleave",(event) =>{
+            event.currentTarget.querySelector('p').classList.add('on');
+          });
+        });
+
+
+    })
+
+    
+
+  </script>
+ </head>
+ <body>
+    <div class="banner">
+       <div class="left">
+          <span class="leftBtn">왼쪽이동</span>
+          <p class="on"><span class="left_num">1</span>/5</p>
+       </div>
+       <ul id="bannerList" class="banner_list"> <!-- id 추가 -->
+        <li class="current"><a href="#"><img src="images/02_01_170410.jpg"  alt=""/></a></li>
+        <li><a href="#"><img src="images/02_02_170410.jpg"  alt=""/></a></li>
+        <li><a href="#"><img src="images/02_03_170410.jpg"  alt=""/></a></li>
+        <li><a href="#"><img src="images/02_04_170410.jpg"  alt=""/></a></li>
+        <li><a href="#"><img src="images/02_05_170410.jpg"  alt=""/></a></li>
+       </ul>
+       <div class="right">
+          <p class="on"><span class="right_num">1</span>/5</p>
+          <span class="rightBtn">오른쪽이동</span>
+       </div>
+    </div>
+ </body>
+</html>
+
+<!-- 1.오른쪽 버튼을 클릭하면 배너가 왼쪽으로 이동 (슬라이드)
+     2.왼쪽 버튼을 클릭하면  배너가 오른쪽으로 이동
+     3.오른쪽 버튼을 클릭했을때 배너 숫자가 왼쪽 버튼 클릭했을때와 동일하게 값을 가져함
+        1/5  2/5  3/5                       1/5   2/5   3/5 
+
+    4.슬라이드?  
+
+-->
+
+
+
+

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, div, img, span{margin: 0; padding: 0;}
+        body{font-family: '본고딕',sans-serif; font-size: 12px;}
+        .icon_box{
+            width: 1000px;
+            height: 230px;
+            background-color: aqua;
+            margin: 50px auto;
+            display: flex;
+           
+        }
+        div.contentodr{
+            width: 200px;
+            height: 230px;
+            transition: height 0.6s;
+        }
+        /* hover */
+        div.contentodr:hover {
+            height: 250px;
+        }
+
+
+        div.contentodr span{
+            display: block;
+        }
+        
+        img.icon{
+            display: block;
+            margin: 70px auto 30px auto;
+            width: 50px;
+            padding: 20px;
+            border-radius: 100%;
+            box-shadow: 0px 0px 0px 30px rgba(255,255,255,0);
+            transition:box-shadow 0.5s ;
+        }
+/* hover */
+        div.contentodr:hover img.icon{
+            box-shadow: 0px 0px 0px 0px rgba(255,255,255,0.6);
+        }
+        
+      span.text{
+            font-size: 1.6em;
+            color:#fff;
+            text-align: center;
+            opacity: 0.4;
+            transition: opacity 0.8s,padding-top 0.8s,font-size 0.8s;
+      }
+      /* hover */
+      div.contentodr:hover span.text{
+        opacity: 1;
+        padding-top:10px;
+        font-size: 2.4em;
+      }
+
+
+
+        div#uno{background-color: rgb(208,130,0);}
+        div#seic{ background-color: rgb(208, 31, 0);}
+        div#dos{background-color: rgb(0, 128, 208);}
+        div#tres{background-color: rgb(111, 0, 208);}
+        div#cuatro{background-color: rgb(147, 3, 94);}
+
+    </style>
+</head>
+<body>
+    <div class="icon_box">
+        <div class="contentodr" id="uno">
+            <img src="images/slide_banner_ico01.png" alt="" class="icon">
+            <span class="text">Home</span>
+        </div>
+
+        <div class="contentodr" id="seic">
+            <img src="images/slide_banner_ico02.png" alt="" class="icon">
+            <span class="text">HOME</span>
+        </div>
+
+        <div class="contentodr" id="dos">
+            <img src="images/slide_banner_ico03.png" alt="" class="icon">
+            <span class="text">APPLE</span>
+        </div>
+
+        <div class="contentodr" id="tres">
+            <img src="images/slide_banner_ico04.png" alt="" class="icon">
+            <span class="text">NAVER</span>
+        </div>
+
+        <div class="contentodr" id="cuatro">
+            <img src="images/slide_banner_ico06.png" alt="" class="icon">
+            <span class="text">GOOGLE</span>
+        </div>
+
+    </div>
+</body>
+</html>

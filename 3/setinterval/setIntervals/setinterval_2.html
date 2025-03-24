@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+ <head>
+  <title> new document </title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <style type="text/css">
+  <!--
+	body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, textarea, p, blockquote, th, td, select, textarea, button {margin: 0;padding: 0;font-size: 12px;line-height: 120%;font-family: '�뗭�',dotum,Dotum,Sans-serif;color: #666;}
+	ul, ol {list-style:none;}
+	img {border:none;}
+	a {text-decoration: none;}
+	.displayno {display:none;}
+	ul.topSpecial{width:790px;height:38px;overflow:hidden;position:relative;padding:246px 0 0}
+	ul.topSpecial li{float:left;padding:11px 0 0}
+	ul.topSpecial li a.img{display:none;position:static}
+	ul.topSpecial li span.badge{position:absolute;right:6px;top:0;overflow:hidden}
+	ul.topSpecial li span.badge img{float:right}
+	ul.topSpecial li a.tab{position:relative;z-index:1;width:112px;text-decoration:none;height:21px;margin-right:-1px;display:block;text-align:center;overflow:hidden;color:#575757;line-height:23px;border:1px solid #E5E5E5}
+	ul.topSpecial li.on{padding:0}
+	ul.topSpecial li.on a.img{display:block;position:absolute;top:0;left:0;border-right:1px solid #E5E5E5}
+	ul.topSpecial li.on span.badge{display:none}
+	ul.topSpecial li.on a.tab{width:111px;z-index:2;height:24px;padding:12px 0 0;font-weight:bold;color:#fff;margin-left:1px;border:0;background:url(images/main_top.gif) no-repeat -22px 0}
+ </style>
+  <script type="text/javascript">
+		document.addEventListener('DOMContentLoaded',()=>{
+			let currentNum = 0;
+			const topSpecialTab = document.getElementById('topSpecialTab');
+			const tabList =topSpecialTab.querySelectorAll('li > a.tab');
+			tabList.forEach((tab,i)=>{
+				const anchor = tab.getElementsByTagName('a')[1];
+				tab.num = i;
+				tab.addEventListener('mouseenter',(e)=>{
+					clearInterval(sid);
+					selectMenu(e.currentTarget.num);
+				});
+				tab.addEventListener('mouseleave',(e)=>{
+					clearInterval(sid);
+					sid = auto();
+
+				});
+			})
+
+			const selectMenu = (num)=>{
+				if(currentNum !== num){
+					tabList[currentNum].parentElement.classList.remove('on');
+					tabList[num].parentElement.classList.add('on');
+					currentNum = num;
+				}
+			}
+
+			let sid;
+
+			const rolling = ()=>{
+				let menuNum = currentNum;
+				menuNum++;
+				if(menuNum > tabList.length-1) menuNum = 0;
+				selectMenu(menuNum);
+			}
+
+			const auto = ()=>{
+				return setInterval(rolling,1000);
+			}
+
+			sid = auto();
+		});
+  </script>
+ </head>
+ <body>
+<!-- 상단 기획전  TAB CONTENT [s]  -->
+<ul class="topSpecial" id="topSpecialTab">	
+	<li class="on">
+		<a href="#" class="img"><img src="images/banner1.jpg" alt="" /></a>
+		<a href="#" class="tab">금주의 이마트행사</a>
+	</li>	
+	<li>
+		<a href="#" class="img"><img src="images/banner2.jpg" alt="" /></a>
+		<a href="#" class="tab">대보름 특별기획</a>
+	</li>
+	<li>
+		<a href="#" class="img"><img src="images/banner3.jpg" alt="" /></a>
+		<a href="#" class="tab">묵은빨래 문제없어</a>
+	</li>
+	<li>
+		<a href="#" class="img"><img src="images/banner4.jpg" alt="" /></a>
+		<a href="#" class="tab">놓칠 수 없는 특가</a>
+	</li>
+	<li>
+		<a href="#" class="img"><img src="images/banner5.jpg" alt="" /></a>
+		<a href="#" class="tab">거침없이 학업정진</a>
+	</li>	
+	<li>
+		<a href="#" class="img"><img src="images/banner6.jpg" alt="" /></a>
+		<a href="#" class="tab">봄 스타일 부탁해</a>
+	</li>
+	<li>
+		<a href="#" class="img"><img src="images/banner7.jpg" alt="" /></a>
+		<a href="#" class="tab">소니 브랜드위크</a>
+	</li>
+</ul>
+<!-- 상단 기획전  TAB CONTENT [e]  -->
+ </body>
+</html>

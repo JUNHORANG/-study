@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .dom{
+      font-size: 16px;
+    }
+    .btn_group{
+      margin-top: 20px;
+    }
+    .btn_group .changeBtn0{
+      background-color: #222;
+      color: #fff;
+      padding: 5px;
+      border-radius: 5px;
+    }
+  </style>
+  <script>
+    window.onload = ()=>{
+      function element0(){
+        document.getElementById("dom_div").style.color='red';
+      }
+      let btn = document.getElementsByClassName("changeBtn0")[0];
+      btn.addEventListener('click', element0);
+    }
+  </script>
+</head>
+<body>
+  <div class="dom">
+    <div class="getElementById">
+      getElementById는 아이디를 찾습니다
+      <div id="dom_div">아이디 값이 dom_div</div>
+    </div>
+  </div>
+  <div class="btn_group">
+    <button class="changeBtn0">getElementById</button>
+  </div>
+  
+</body>
+</html>

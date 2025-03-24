@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>서울시</title>
+    <link rel="stylesheet" href="css/root.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/container.css">
+    <link rel="stylesheet" href="css/footer.css">
+</head>
+<body>
+    <!-- 바로가기메뉴 -->
+     <div id="skipMenu">
+        <a href="#contents">본문바로가기</a>
+        <a href="#gnb">주메뉴바로가기</a>
+     </div>
+<!-- wrapper s -->
+     <div class="wrapper">
+        <!-- header s -->
+        <header class="header">
+            <div class="header_nav_sub">
+                <div class="english" rol="buttn" tabindex="0" aria-label="영문페이지로 이동">
+                    <a href="#">ENGLISH</a>
+                </div>
+                <div class="nav_intro_menu">
+                    <ul class="nav_sub_area" role="menu" aria-lable="서브메뉴">
+                        <li role="none">
+                            <a href="#" role="menuitem">로그인</a>
+                        </li>
+                        <li role="none">
+                            <a href="#" role="menuitem">회원가입</a>
+                        </li>
+                        <li role="none">
+                            <a href="#" role="menuitem">사이트맵</a>
+                        </li>
+                    </ul>
+                    <div class="listbox_area">
+                        <h2 id="select_lb" class="blind">정보검색순위</h2>
+                        <button aria-haspopup="listbox" aria-controls="li_sort" 
+                        aria-expanded="false">검색순위</button>
+                        <ul id="li_sort" role="listbox" aria-labelledby="select_lb" class="listbox_list none">
+                            <li id="li_srot01" role="option" aria-selected="true" tabindex="0">행정복지</li>
+                            <li id="li_srot01" role="option" aria-selected="false" tabindex="0">문화행사</li>
+                            <li id="li_srot01" role="option" aria-selected="false" tabindex="0">주택세금</li>
+                            <li id="li_srot01" role="option" aria-selected="false" tabindex="0">교통정보</li>
+                            <li id="li_srot01" role="option" aria-selected="false" tabindex="0">안전</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="gnb_area">
+                <h1><a href="#" aria-label="서울특별시" role="image"></a></h1>
+                <nav class="gnb" id="gnb" role="navigation" aria-label="주메뉴">
+                    <ul>
+                        <li><a href="#" aria-current="true">서울소식</a></li>
+                        <li><a href="#" >시민참여</a></li>
+                        <li><a href="#" >분야별정보</a></li>
+                        <li><a href="#" >서울소개</a></li>
+                        <li><a href="#" >부서안내</a></li>
+                        <li><a href="#" >정보공개</a></li>
+                        <li><a href="#" >응답소</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <!-- header e -->
+         <!-- contents s -->
+          <main class="contents" id="contents" role="main">
+             <!-- section 1 -->
+              <section class="banner_area mb50">
+                <div class="search" aria-label="검색서비스" role="search">
+                    <h2 class="title_2">서울시 정보검색 서비스</h2>
+                    <form action="#" method="get" class="search_area">
+                        <label for="search_input" id="search_label" class="blind">검색</label>
+                        <input type="text" class="search_text" id="search_input" name="query"
+                         aria-labelledby="search_label" placeholder="검색어를 입력하세요" >
+                         <button type="submit" class="search_btn" aria-label="검색" ></button>
+                    </form>
+                    <p class="search_description" tabindex="0">검색어를 입력한 후 검색 버튼을 누르세요.</p>
+                </div>
+              </section>
+
+              <section class="quick_menu_area mb50" aria-label="주요서비스">
+                <h3 class="main_title">주요서비스</h3>
+                <ul class="icon_menu" role="menu">
+                    <li role="none" class="icon1"><a href="#" role="menuitem">공공서비스예약</a></li>
+                    <li role="none" class="icon2"><a href="#" role="menuitem">서울일자리</a></li>
+                    <li role="none" class="icon3"><a href="#" role="menuitem">서울복지포털</a></li>
+                    <li role="none" class="icon4"><a href="#" role="menuitem">서울정보</a></li>
+                    <li role="none" class="icon5"><a href="#" role="menuitem">부동산정보</a></li>
+                    <li role="none" class="icon6"><a href="#" role="menuitem">내손안에서울</a></li>
+                    <li role="none" class="icon7"><a href="#" role="menuitem">상상대로서울</a></li>
+                    <li role="none" class="icon8"><a href="#" role="menuitem">평생학습포털</a></li>
+                    <li role="none" class="icon9"><a href="#" role="menuitem">서울시의회</a></li>
+                    <li role="none" class="icon10"><a href="#" role="menuitem">청년몽땅정보</a></li>
+                </ul>
+              </section>
+
+            <section class="story_area mb50" aria-lable="스토리 서울">
+                <div class="story_area_div">
+                    <div class="story_seoul" role="button">
+                        <a href="#" aria-label="스토리서울" role="image"></a>
+                    </div>
+
+                    <div class="festival_seoul" role="button">
+                        <a href="#" aria-label="패스티벌서울" role="image"></a>
+                    </div>
+
+                    <div class="story_prosecutor" role="button">
+                        <a href="#" aria-label="대한민국 정부 대표포털 정부24(민원)" role="image"></a>
+                    </div>
+
+                    <div class="story_government" role="button">
+                        <a href="#" aria-label="민원발급서비스 서울시 온라인민원" role="image"></a>
+                    </div>
+
+                    <div class="story_complaint" role="button">
+                        <a href="#" aria-label="서울시민안전을 위한 수산물 방사능 검사결과" role="image"></a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="notice_area mb50">
+                <div class="notice">
+                    <ul class="notice_list"  role="tablist">
+                        <li role="none">
+                            <a href="#" role="tab" aria-selected="true" aria-controls="tab_news" id="news">새소식</a>
+                        </li>
+                        <li role="none">
+                            <a href="#" role="tab" aria-selected="false" aria-controls="tab_public" id="public">고시공고</a>
+                        </li>
+                        <li role="none">
+                            <a href="#" role="tab" aria-selected="false" aria-controls="tab_data" id="data">보도자료</a>
+                        </li>
+                        <li role="none">
+                            <a href="#" role="tab" aria-selected="false" aria-controls="tab_culture" id="culture">문화행사</a>
+                        </li>
+                    </ul>
+
+                    <div id="tab_news" role="tabpanel"  aria-labelledby="news" class="tabpanel">
+                        <div class="tabpanel_box">
+                            <div class="day_box">
+                                <span class="year">2025.03</span><br/>
+                                <span class="dd">05</span>
+                            </div>
+                            <div class="day_text">
+                                <span class="day_title">2025 주민참여 경진대회</span>
+                                <span class="day_description">
+                                    대기환경보전법 시행규칙 개정('22.6.)으로 '22.12.31. 
+                                    이전 가스열펌프를 설치·운영하고 있는 시설은 '25.1.1.부터 대기배출시설로
+                                     적용됨에 따라 가스열펌프 저감장치를 부착해야 합니다.
+                                     이전 가스열펌프를 설치·운영하고 있는 시설은 '25.1.1.부터 대기배출시설로
+                                </span>
+                            </div>
+                        </div>
+                        <ul class="tabpanel_list">
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                        </ul>
+                    </div>
+
+                    <div id="tab_news" role="tabpanel"  aria-labelledby="news" class="tabpanel">
+                        <div class="tabpanel_box">
+                            <div class="day_box">
+                                <span class="year">2025.03</span><br/>
+                                <span class="dd">05</span>
+                            </div>
+                            <div class="day_text">
+                                <span class="day_title">2025 주민참여 경진대회</span>
+                                <span class="day_description">
+                                    대기환경보전법 시행규칙 개정('22.6.)으로 '22.12.31. 
+                                    이전 가스열펌프를 설치·운영하고 있는 시설은 '25.1.1.부터 대기배출시설로
+                                     적용됨에 따라 가스열펌프 저감장치를 부착해야 합니다.
+                                     이전 가스열펌프를 설치·운영하고 있는 시설은 '25.1.1.부터 대기배출시설로
+                                </span>
+                            </div>
+                        </div>
+                        <ul class="tabpanel_list">
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                        </ul>
+                    </div>
+
+                    <div id="tab_news" role="tabpanel"  aria-labelledby="news" class="tabpanel">
+                        <div class="tabpanel_box">
+                            <div class="day_box">
+                                <span class="year">2025.03</span><br/>
+                                <span class="dd">05</span>
+                            </div>
+                            <div class="day_text">
+                                <span class="day_title">2025 주민참여 경진대회</span>
+                                <span class="day_description">
+                                    대기환경보전법 시행규칙 개정('22.6.)으로 '22.12.31. 
+                                    이전 가스열펌프를 설치·운영하고 있는 시설은 '25.1.1.부터 대기배출시설로
+                                     적용됨에 따라 가스열펌프 저감장치를 부착해야 합니다.
+                                     이전 가스열펌프를 설치·운영하고 있는 시설은 '25.1.1.부터 대기배출시설로
+                                </span>
+                            </div>
+                        </div>
+                        <ul class="tabpanel_list">
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                        </ul>
+                    </div>
+
+                    <div id="tab_news" role="tabpanel"  aria-labelledby="news" class="tabpanel">
+                        <div class="tabpanel_box">
+                            <div class="day_box">
+                                <span class="year">2025.03</span><br/>
+                                <span class="dd">05</span>
+                            </div>
+                            <div class="day_text">
+                                <span class="day_title">2025 주민참여 경진대회</span>
+                                <span class="day_description">
+                                    대기환경보전법 시행규칙 개정('22.6.)으로 '22.12.31. 
+                                    이전 가스열펌프를 설치·운영하고 있는 시설은 '25.1.1.부터 대기배출시설로
+                                     적용됨에 따라 가스열펌프 저감장치를 부착해야 합니다.
+                                     이전 가스열펌프를 설치·운영하고 있는 시설은 '25.1.1.부터 대기배출시설로
+                                </span>
+                            </div>
+                        </div>
+                        <ul class="tabpanel_list">
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                            <li><a href="#">3월은 자동차세 납부의 달입니다.</a><span class="date">2025-03-05</span></li>
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="popup" role="banner">
+                    <h3 class="main_title">시민참여</h3>
+                    <div class="btn_banner_area">
+                        <button class="prev_slidebanner" aria-label="이전배너" aria-controls="slide_ctrl">
+                            <!-- <span class="blind">이전</span> -->
+                        </button>
+                        <button class="next_slidebanner" aria-label="다음배너" aria-controls="slide_ctrl">
+                            <!-- <span class="blind">다음</span> -->
+                        </button>
+                    </div>
+                    <div class="slides">
+                        <ul class="slid_banner" id="slide_ctrl" aria-live="polite">
+                            <li aria-current="false"><a href="#"><img src="image/img1.png" alt="일자리한마당"></a></li>
+                            <li aria-current="true"><a href="#"><img src="image/img2.png" alt="인천청년르네상스"></a></li>
+                            <li aria-current="false"><a href="#"><img src="image/img3.png" alt="인천시10대주요추신사업에 별점을주세요"></a></li>
+                        </ul>
+                    </div>
+                    <ul class="btn_slide_num_area">
+                        <li>
+                            <a href="#" role="button" class="btn_slide_num"aria-controls="slide_ctrl" aria-current="false"
+                            aria-label="배너1"></a>
+                        </li>
+                        <li>
+                            <a href="#" role="button" class="btn_slide_num"aria-controls="slide_ctrl" aria-current="true"
+                            aria-label="배너2"></a>
+                        </li>
+                        <li>
+                            <a href="#" role="button" class="btn_slide_num"aria-controls="slide_ctrl" aria-current="false"
+                            aria-label="배너3"></a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="news_area mb50">
+                <h3 class="main_title">새소식</h3>
+                <ul class="news_list">
+                    <li>
+                        <a href="#">
+                           <img src="image/62c62d9f4eff88.55635546.jpg" alt="">
+                           <span>
+                             야간,휴일에도 진료하는 병원을 찾고 있다면? 우리아이 안심 의료기관을 이용
+                           </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                           <img src="image/655ea97bcfdef9.06567692.jpg" alt="">
+                           <span>
+                             야간,휴일에도 진료하는 병원을 찾고 있다면? 우리아이 안심 의료기관을 이용
+                           </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                           <img src="image/6655684fda19e4.59246004.jpg" alt="">
+                           <span>
+                             야간,휴일에도 진료하는 병원을 찾고 있다면? 우리아이 안심 의료기관을 이용
+                           </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                           <img src="image/6662b967ac7505.38635245.jpg" alt="">
+                           <span>
+                             야간,휴일에도 진료하는 병원을 찾고 있다면? 우리아이 안심 의료기관을 이용
+                           </span>
+                        </a>
+                    </li>
+                </ul>
+                <a href="#" role="button" class="news_more">전체보기</a>
+            </section>
+
+             
+          </main>
+         <!-- contents e -->
+          <!-- footer s -->
+           <footer class="footer">
+                <div class="footer_top_area">
+                    <div class="footer_top">
+                        <ul class="footer_menu" role="menubar">
+                            <li role="none">
+                                <a href="#" role="menuitem" aria-controls="city" aria-expanded="false">서울시의회</a>
+                                <ul class="footer_list" role="menu" aria-label="서울시의회" id="city">
+                                    <li role="none"><a href="#" role="menuitem">서울시의회1</a></li>
+                                    <li role="none"><a href="#" role="menuitem">서울시의회2</a></li>
+                                    <li role="none"><a href="#" role="menuitem">서울시의회3</a></li>
+                                </ul>
+                            </li>
+
+                            <li role="none">
+                                <a href="#" role="menuitem" aria-controls="department" aria-expanded="false">부서별홈페이지</a>
+                                <ul class="footer_list" role="menu" aria-label="부서별홈페이지" id="department">
+                                    <li role="none"><a href="#" role="menuitem">부서별홈페이지</a></li>
+                                    <li role="none"><a href="#" role="menuitem">부서별홈페이지</a></li>
+                                    <li role="none"><a href="#" role="menuitem">부서별홈페이지</a></li>
+                                </ul>
+                            </li>
+
+                            <li role="none">
+                                <a href="#" role="menuitem" aria-controls="welfare" aria-expanded="false">행정복지센터</a>
+                                <ul class="footer_list" role="menu" aria-label="행정복지센터" id="welfare">
+                                    <li role="none"><a href="#" role="menuitem">행정복지센터</a></li>
+                                    <li role="none"><a href="#" role="menuitem">행정복지센터</a></li>
+                                    <li role="none"><a href="#" role="menuitem">행정복지센터</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                        <div role="radiogroup" aria-labelledby="radio-gropu-label" class="customer_group">
+                            <span id="radio-gropu-label" class="customer_satisfaction">고객만족도</span>
+                            <input type="radio" id="option1" name="option" aria-checked="false">
+                            <label for="option1" class="radio_label">만족</label>
+
+                            <input type="radio" id="option2" name="option" aria-checked="false">
+                            <label for="option2" class="radio_label">보통</label>
+
+                            <input type="radio" id="option3" name="option" aria-checked="false">
+                            <label for="option3" class="radio_label">불만족</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="footer_menu_wrap">
+                    <ul class="footer_menu_list" role="menu">
+                        <li role="none"><a href="#" role="menuitem">찾아오시는길</a></li>
+                        <li role="none"><a href="#" role="menuitem">청사안내</a></li>
+                        <li role="none"><a href="#" role="menuitem">전화번호안내</a></li>
+                        <li role="none"><a href="#" role="menuitem">개인정보처리방침</a></li>
+                        <li role="none"><a href="#" role="menuitem">저작권정책</a></li>
+                        <li role="none"><a href="#" role="menuitem">이메일무단수집거부</a></li>
+                        <li role="none"><a href="#" role="menuitem">뷰어다운로드</a></li>
+                    </ul>
+                </div>
+                <div class="footer_add_area">
+                    <div class="fooer_logo">
+                        <a href="#" aria-label="서울시" role="image"></a>
+                    </div>
+                    <div class="footer_add">
+                        <p class="add1">서울특별시청 01234 서울특별시 중구 세종대로 110</p>
+                        <p class="add2">대표전화:02-1234-5678 또는 02-1234-1234(365일 24시간)</p>
+                        <p class="add3">&copy;seoul metropolitan government all rights reserved</p>
+                    </div>
+                    <div class="footer_icon">
+                        <img src="image/ic_wa_2024.png" alt="웹접근성">
+                    </div>
+                </div>
+           </footer>
+          <!-- footer e -->
+     </div>
+ <!-- wrapper e -->
+</body>
+</html>

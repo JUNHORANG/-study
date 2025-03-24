@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./todo.css">
+  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    <h1>오늘의 할 일</h1>
+    <div class="input-section">
+      <input type="text" id="taskinput" placeholder="오늘의 할 일을 입력하세요">
+      <button id="addTaskBtn">추가</button>
+    </div>
+    <ul id="taskList">
+
+    </ul>
+  </div>
+  <script>
+    document.addEventListener("DOMContentLoaded",()=>{
+      const taskInput = document.getElementById('taskinput');
+      const addTaskBtn = document.getElementById('addTaskBtn');
+      const taskList = document.getElementById('taskList');
+      let tasks = [];
+      console.log(taskInput.value)
+
+      function addTask(){
+        const taskText = taskInput.value.trim();
+        
+        if(taskText === ''){
+          alert('할 일을 입력하세요.');
+          return;
+        }
+
+        const newTask = {
+          id:Date.now(),
+          text:taskText,
+          completed:false,
+        }
+        tasks.push(newTask);
+        renderTask();
+        taskInput.value = '';
+      }
+
+      function renderTask(){
+        taskList.innerHTML = '';
+        tasks.forEach(task=>{
+          const li = document.createElement('li');
+          const emoji = '❤';
+          li.textContent = `${emoji} ${task.text}`;
+          li.dataset.id = task.id;
+
+          taskList.appendChild(li);
+
+          if(task.completed){
+            li.classList.add('completed');
+          }
+
+          const toggleBtn = document.createElement('button');
+          toggleBtn.textContent = task.completed ? '취소' : '완료';
+          toggleBtn.classList.add('finishBtn');
+          toggleBtn.addEventListener('click',() => toggleTask(task.id));
+  
+          const deleteBtn = document.createElement('button');
+          deleteBtn.textContent = '삭제';
+          deleteBtn.classList.add('deleteBtn');
+          deleteBtn.addEventListener('click',() => deleteTask(task.id));
+  
+          li.appendChild(toggleBtn)
+          li.appendChild(deleteBtn)
+        });
+      }
+
+      function toggleTask(id){
+        const task = tasks.find(task => task.id === id);
+        if(task){
+          task.completed =! task.completed;
+          renderTask();
+        }
+      }
+
+      function deleteTask(id){
+        tasks = tasks.filter(task => task.id !== id);
+        renderTask();
+      }
+
+      addTaskBtn.addEventListener('click',addTask);
+      renderTask();
+    })
+  </script>
+  
+</body>
+</html>

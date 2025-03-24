@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/list.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+  </head>
+</head>
+<body>
+    <div id="page">
+        
+        <h2><strong>도서목록</strong> <span id="counter"></span></h2>
+        <ul>
+          <li id="one" >10번교항곡</li>
+          <li id="two" >다른색들</li>
+          <li id="three" >빅피처</li>
+          <li id="four">환상동화집</li>
+        </ul>
+        <div id="newItemButton"><button href="#" id="showForm">최신도서</button></div>
+        <form id="newItemForm">
+          <input type="text" id="itemDescription" placeholder="도서목록추가" />
+          <input type="submit" id="add" value="등록" />
+        </form>
+      </div>
+      <script>
+          document.addEventListener("DOMContentLoaded",() =>{
+              const list =  document.querySelector('ul')
+              const newItemForm =  document.getElementById('newItemForm')
+              const newItemButton =  document.getElementById('newItemButton')
+              const showFormButton =  document.getElementById('showForm')
+              const counter =  document.getElementById('counter')
+
+              newItemForm.style.display ="none";
+              newItemButton.style.display="block";
+
+              function animateListItem(){
+                  const listItem = document.querySelectorAll('li');
+                  listItem.forEach((item,index)=>{
+                    item.style.opacity = 0;
+                    item.style.transition = "opacity 2s ease-in-out"
+                    setTimeout(()=>{
+                      item.style.opacity = 1;
+                    },450 * index)//0  450 1000..  
+                  })
+              }
+              animateListItem()
+              
+              showFormButton.addEventListener('click',()=>{
+                newItemForm.style.display ="block";
+                newItemButton.style.display="none";
+              })
+
+              newItemForm.addEventListener('submit',(event) =>{
+                event.preventDefault();
+                const input = newItemForm.querySelector('input[type="text"]')
+                const newItemText =  input.value.trim();
+                //console.log(newItemText)
+                input.value =""
+
+                
+                const newItem = createListItem(newItemText);
+                list.appendChild(newItem)
+                 updateItemCount();
+              })
+
+
+              function createListItem(text){
+                
+                 const listItem = document.createElement('li')
+                 listItem.textContent = text
+                 //console.log(listItem)
+                 listItem.style.opacity=0;
+                 listItem.style.transition="opacity 0.8s ease"
+                 setTimeout(()=>{
+                   listItem.style.opacity=1
+                 },0)
+                 return listItem
+              }
+
+              function updateItemCount(){
+                const incompleteItems =  document.querySelectorAll('li').length;
+                counter.textContent =incompleteItems;
+
+                if(incompleteItems == 0){
+                  alert('삭제할 목록이 없습니다')
+                  newItemForm.style.display ="none";
+                  newItemButton.style.display="block";
+                }
+              }
+              updateItemCount();
+
+              list.addEventListener('click',(event) =>{
+                //console.log(event.target.tagName)
+                if(event.target.tagName === "LI"){
+                    item = event.target
+                   // item.remove()
+                   item.style.opacity =0;
+                   item.style.paddingLeft ='250px';
+                   item.style.transition ='opacity 0.8s ease, padding-left  0.8s ease'
+
+                   setTimeout(()=>{
+                    item.remove();
+                    updateItemCount();
+                   },500)
+                }
+              })
+
+              
+          })
+
+      </script>
+</body>
+</html>

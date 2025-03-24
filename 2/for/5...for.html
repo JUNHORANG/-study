@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  lang="ko" xml:lang="ko">
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=8"/>
+	<meta http-equiv="Expires" content="1" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Cache-Control" content="No-Cache" />
+	
+    <style type="text/css">
+   
+		h1, h2, h3, h4, h5, h6, div, p, dl, dt, dd, ul, ol, li, form, fieldset, blockquote, address, table, thead, tbody, tfoot, tr, td, caption {margin: 0;padding:;}
+		div, p, span, li, table td {word-break: break-all;}
+		p, li {line-height: 130%;}
+		ul,ol {list-style:none outside none;margin:0;padding:0;}
+		img, fieldset {border: 0 none;}
+		a, a:link {color: #666666;text-decoration: none;}
+		.interpark_recom {float: left;height: 536px;overflow: hidden;position: relative;width: 352px;}
+		.interpark_recom h2 {padding: 0 0 5px 12px;}
+        #bookList {padding-left: 47px;}
+		/*.interpark_recom .banner {padding-left: 47px;}*/
+		.interpark_recom .banner img {height: 470px;width: 270px;}
+		.interpark_recom .btn_left {left: 17px;position: absolute;top: 178px;width:23px;height:41px;overflow:hidden;}
+		.interpark_recom .btn_left a.on{margin-left:-23px;}
+		.interpark_recom .btn_right {position: absolute;right: 0;top: 178px;width:23px;height:41px;overflow:hidden;}
+		.interpark_recom .btn_right a.on{margin-left:-23px;}
+
+		.interpark_recom	ul	{text-align:center; font-size:0; line-height:0;}
+		.interpark_recom	ul	li	{display:inline; padding:0 0 0 3px;}
+
+		.displayno{display:none;}
+
+    </style>
+    
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+					const leftBtn = document.querySelector('.btn_left');
+					const rightBtn = document.querySelector('.btn_right');
+					const bookList = document.querySelectorAll('#bookList > p');
+					const iconList = document.querySelectorAll('#iconList img');
+
+					let num = 0;//실행 되는 요소 인덱스
+					let prevNum = 0;//실행 되기 전의 요소 인덱스
+
+					leftBtn.addEventListener('click',e => {
+						e.preventDefault();
+
+						if(num === 0){
+							num = bookList.length-1;
+							active(num);
+							return
+						}
+
+						num--;
+						active(num);
+					});
+
+					rightBtn.addEventListener('click',e => {
+						e.preventDefault()
+
+						if(num === bookList.length-1){
+							num = 0;
+							active(num);
+							return
+						}
+
+						num++;
+						active(num);
+					});
+
+				  iconList.forEach((el,idx)=>{
+						el.addEventListener('click',(e)=>{
+							num = idx;
+							active(num);
+						})
+					})
+
+					const active = (num) => {
+
+						bookList[num].classList.remove('displayno');
+						bookList[prevNum].classList.add('displayno');
+						iconList[num].src = "images/i_on.gif";
+						iconList[prevNum].src = "images/i_off.gif";
+
+						prevNum = num;
+					}
+				});
+    </script>
+</head>
+
+<body style="padding:100px;">
+<div class="interpark_recom">
+	<h2>
+		<img alt="" src="images/tit_interpark_recom.gif">
+		<a href="#">
+			<img alt="" src="images/btn_more.gif">
+		</a>
+	</h2>
+	<span class="btn_left">
+		<a href="#" id="btn_left"><img src="images/btn_i_left.png" /></a>
+	</span>
+	<span class="btn_right" >
+		<a href="#" id="btn_right"><img src="images/btn_i_right.png"></a>
+	</span>
+	<div id="bookList">
+		<p class="banner">
+			<a href="#">
+				<img width="270" height="470" alt="" src="images/book1.jpg">
+			</a>
+		</p>
+		<p class="banner displayno">
+			<a href="#">
+				<img width="270" height="470" alt="" src="images/book2.jpg">
+			</a>
+		</p>
+		<p class="banner displayno">
+			<a href="#">
+				<img width="270" height="470" alt="" src="images/book3.jpg">
+			</a>
+		</p>
+		<p class="banner displayno">
+			<a href="#">
+				<img width="270" height="470" alt="" src="images/book4.jpg">
+			</a>
+		</p>
+	</div>
+	<ul id="iconList">
+		<li>
+			<a href="#"><img src="images/i_on.gif"/></a>
+		</li>
+		<li>
+			<a href="#"><img src="images/i_off.gif"/></a>
+		</li>
+		<li>
+			<a href="#"><img src="images/i_off.gif"/></a>
+		</li>
+		<li>
+			<a href="#"><img src="images/i_off.gif"/></a>
+		</li>
+	</ul>
+</div>
+</body>
+</html>

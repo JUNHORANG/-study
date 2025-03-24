@@ -1,0 +1,124 @@
+@charset "utf-8";
+.wrapper {
+    background-color: #fff;
+    font-size: var(--font-size-12);
+    width: 100%;
+    display: grid;
+    grid-template-areas: 
+    "header"
+    "contents"
+    "footer"
+}
+.header{
+    grid-area: header;
+}
+.contents{
+    grid-area: contents;
+}
+.footer{
+    grid-area: footer;
+}
+
+/* header */
+.header_nav_sub{
+    width: var(--main-width);
+    margin: 0 auto;
+    height: 40px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+}
+
+
+.header::before{
+    content: '';
+    border-bottom: var(--border-bottm);
+    display: block;
+    width: 100%;
+    position:absolute;
+    left: 0;
+    top:40px
+}
+
+.english{
+    background: var(--main-bg-color-blue);
+    border-radius: var(--border-radius);
+    width: 100px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.english a{
+    color:var( --text-color-fff);
+    
+}
+
+.nav_intro_menu{
+    position: absolute;
+    right: 0;
+    top:10px;
+    display: flex;
+}
+.nav_sub_area{
+    display: inline-flex;
+}
+.nav_sub_area li{
+    /* 좌우여백  start 왼쪽  end 오른쪽 */
+    padding-inline: 10px;
+    align-content: center;
+}
+.listbox_area{
+    position: relative;
+}
+.listbox_area button{
+    cursor: pointer;   
+    border:var( --border)
+}
+.listbox_area button:after{
+    content: "▲";
+    font-size: 12px;
+    display: inline-block;
+    color:#363636;
+    transform:rotate(180deg);
+}
+
+.listbox_area .none{display: none}
+
+.listbox_list{
+    position: absolute;
+    top:30px;
+    left:5px;
+    line-height: 2;
+
+}
+/* 로고.gnb */
+.gnb_area{
+    width: var(--main-width);
+    margin: 0 auto;
+    position: relative;
+    height: 80px;   
+    display: flex;
+}
+.gnb_area h1{
+    background: var(--main-bgimg) -20px 5px;
+    width: 160px;
+    height: 40px;
+}
+.gnb_area .gnb{
+    margin-left: 30px;
+}
+.gnb_area .gnb ul{
+    display: inline-flex;
+
+}
+.gnb_area .gnb li{
+    width: 120px;
+    display: flex;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--heaer-font-size);
+    font-weight: 600;
+}
+

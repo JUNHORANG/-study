@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+
+<head>
+    <title> new document </title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css">
+        html,
+        body {
+            font: 12px/15px "돋움", Dotum, Tahoma, Arial;
+        }
+
+        div,
+        dl,
+        dt,
+        dd,
+        ul,
+        ol,
+        li,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        pre,
+        form,
+        fieldset,
+        input,
+        textarea,
+        p,
+        blockquote,
+        th,
+        td {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            border: none;
+        }
+
+        ol,
+        ul,
+        li {
+            list-style: none;
+        }
+
+        .module {
+            position: relative;
+            border: 1px solid #ccc;
+            background: #fff;
+            width: 233px;
+            height: 171px;
+            margin-right: 0;
+        }
+
+        .module .mod-title,
+        .module .tabpanel h3 {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            border: 0;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+        }
+
+        .module .tablist-bar {
+            position: absolute;
+            bottom: 3px;
+            left: 9px;
+        }
+
+        .tablist-bar li {
+            position: relative;
+            float: left;
+        }
+
+        .tablist-bar li a {
+            float: left;
+            height: 28px;
+            overflow: hidden;
+            text-indent: -10000px;
+        }
+
+        .module .tablist-bar a {
+            position: relative;
+            width: 58px;
+            margin-left: -3px;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            background-image: url('images/hp_coupon_point.png');
+        }
+
+        .module .tablist-bar .selected {
+            position: relative;
+        }
+
+        .module .tablist-bar .selected .tab-1 {
+            background-position: 0 -38px;
+        }
+
+        .module .tablist-bar .tab-2 {
+            background-position: -58px 0;
+        }
+
+        .module .tablist-bar .selected .tab-2 {
+            background-position: -58px -38px;
+        }
+
+        .module .tablist-bar .tab-3 {
+            background-position: -116px 0;
+        }
+
+        .module .tablist-bar .selected .tab-3 {
+            background-position: -116px -38px;
+        }
+
+        .module .tablist-bar .tab-4 {
+            background-position: -174px 0;
+        }
+
+        .module .tablist-bar .selected .tab-4 {
+            background-position: -174px -38px;
+        }
+
+        .tabpanel {
+            display: none;
+        }
+
+        .tabpanel-active {
+            display: block;
+        }
+
+       
+    </style>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded',()=>{
+            const tabList = document.querySelectorAll('#tabList > li');
+            const img = document.querySelector('.tabpanel img');
+            let currentNum = 0;
+
+            tabList.forEach((el,idx) => {
+                el.addEventListener('mouseover',(e)=>{
+                    selectMenu(idx);
+                });
+            });
+            
+            //함수를 사용해서 재사용성을 높였다
+            const selectMenu = (num)=>{
+                if(currentNum !== num){
+                    tabList[currentNum].classList.remove('selected');
+                    tabList[num].classList.add('selected');
+                    currentNum = num
+                    img.src = `images/item${num + 1}.jpg`;
+                }
+            }
+
+        });
+    </script>
+</head>
+
+<body style="padding:100px;">
+    <div id="tab" class="module mod-benefits">
+        <!--<h2 class="mod-title">쿠폰포인트</h2>-->
+        <ul id="tabList" class="tablist-bar">
+            <li class="selected"><a href="#" class="tab-1">할인혜택</a></li>
+            <li><a href="#" class='tab-2'>구매혜택</a></li>
+            <li><a href="#" class='tab-3'>클럽혜택</a></li>
+            <li><a href="#" class='tab-4'>제휴혜택</a></li>
+        </ul>
+        <div class="tabpanel tabpanel-active">
+            <!--<h3>할인혜택</h3>-->
+            <a href="#"><img src="images/item1.jpg" alt=''></a>
+        </div>
+
+    </div>
+</body>
+
+</html>
