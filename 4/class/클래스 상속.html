@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  상속
+  클래스는 다른 클래스를 상속 받는다. 상속을 통해 기존 클래스의 기능을 확장 하거나 재사용할 수 있다. 
+
+  기본 구조
+  class childClass extands parentClass{
+    constructor(...args){
+      super(...args)// 부모 클래스의 생성자 호출
+      자식 클래스의 초기화 코드
+    }
+    자식 클래스의 메서드 정의
+  }
+  extends : 클래스 상속을 구현하기 위해 사용하는 키워드, 상위 클래스의 속성과 메서드를 하위 클래스가 상속 받아 재 사용하거나 확장 할 수 있게 한다. 
+  super : 부모 클래스의 생성자를 호출, 자식 클래스의 생성자 반드시 호출
+  <script>
+    class Person {
+      constructor(name,age){
+        this.name = name;
+        this.age = age;
+      }
+    }
+    class Student extends Person {
+      constructor(name,age,major){
+        super(name,age);//부모 클래스의 생성자를 호출하여 초기화
+        this.major = major;
+      }
+      study(){
+        console.log(`${this.name}는 ${this.major}를 공부합니다.`);
+      }
+    }
+    const student1 = new Student('홍길동',20,'정보컴퓨터');
+    student1.study();
+  </script>
+</body>
+</html>

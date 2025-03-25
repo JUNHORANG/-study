@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  다향성
+  하나의 인터페이스나 메서드가 다양한 형태로 동작 할 수 있는 능력
+  코드의 재사용성과, 유연성을 높이기 위해
+
+  <script>
+    class Calculator{
+      calculator(a,b){
+        console.log('기본 계산기가 없습니다.')
+      }
+    }
+    class AddCalculator extends Calculator{
+      calculator(a,b){
+        console.log(`${a} + ${b} = ${a+b}`);
+      }
+    }
+    class MultiplayCalculator extends Calculator{
+      calculator(a,b){
+        console.log(`${a} * ${b} = ${a*b}`);
+      }
+    }
+    const calc = [
+      new Calculator(),
+      new AddCalculator(),
+      new MultiplayCalculator()
+    ]
+    calc.forEach(el => el.calculator(5,4));
+    //다향성을 통해 다양한 객체가 동일한 인터페이스를 사용하면서 각자의 고유한 동작을 수행할 수 있다.
+  </script>
+</body>
+</html>
