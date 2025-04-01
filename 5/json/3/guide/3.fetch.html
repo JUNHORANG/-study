@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const getBtn = document.getElementById("getBtn");
+      const postBtn = document.getElementById("postBtn");
+      const putBtn = document.getElementById("putBtn");
+      const deleteBtn = document.getElementById("deleteBtn");
+
+      //가져오기
+      getBtn.addEventListener('click', (e) => {
+        fetch('http://localhost:3000/posts')
+          .then((response) => {
+            console.log(response);
+            if (response.ok) {
+              return response.json()
+            } else {
+              //에러 발생
+              throw new Error(`${response.status} error 발생`);
+            }
+          })
+          .then((json) => {
+            console.log(json);
+            fetch('http://localhost:3000/posts');
+          })
+          .then((response) => response.json())
+          .then((json) => console.log(json))
+          //에러 핸들링
+          .catch((err) => console.log(err.message));
+      });
+
+      //추가
+      postBtn.addEventListener('click', (e) => {
+        fetch('http://localhost:3000/posts', {
+          method: 'POST',
+          body: JSON.stringify({
+            title: 'foo',
+            body: 'bar',
+            userId: 1,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        })
+          .then((response) => response.json())
+          .then((json) => console.log(json));
+      });
+
+      //수정
+      putBtn.addEventListener('click', (e) => {
+        //서버에 실제 업데이트 되지 않는다.
+        //구문만 참조
+        fetch('http://localhost:3000/1', {
+          method: 'PUT',
+          body: JSON.stringify({
+            id: 1,
+            title: 'foo',
+            body: 'bar',
+            userId: 1,
+          }),
+          headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+          },
+        })
+          .then((response) => response.json())
+          .then((json) => console.log(json));
+      });
+
+      //삭제
+      deleteBtn.addEventListener('click', (e) => {
+        fetch('http://localhost:3000/1', {
+          method: 'DELETE',
+        })
+        .then((response) => response.json())
+        .then((json) => console.log(json));
+      });
+    });
+  </script>
+</head>
+<body>
+  <button type="button" id="getBtn">get</button>
+  <button type="button" id="postBtn">post</button>
+  <button type="button" id="putBtn">put</button>
+  <button type="button" id="deleteBtn">delete</button>
+</body>
+</html>
